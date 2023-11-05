@@ -1,0 +1,27 @@
+.about-us {
+  text-align: center;
+  padding: 30px;
+}
+
+.company-description {
+  margin-bottom: 20px;
+}
+
+.employee-section {
+  display: flex;
+  justify-content: space-around;
+}
+.employee {
+  flex: 1;
+  margin: 100px;
+}
+
+.employee img {
+  max-width: 50%;
+  height: auto;
+}
+
+.employee p {
+  margin-top: 10px;
+}
+
