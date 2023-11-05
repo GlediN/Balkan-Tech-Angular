@@ -8,13 +8,15 @@ import { ProductListPageComponent } from './pages/product-list-page/product-list
 import { HeaderComponent } from './shared/header/header.component';
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListPageComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
