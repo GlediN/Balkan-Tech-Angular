@@ -9,12 +9,17 @@ import { HeaderComponent } from './shared/header/header.component';
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
+import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ProductListPageComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    AboutUsPageComponent,
+
   ],
   imports: [
     BrowserModule,
