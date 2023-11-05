@@ -18,10 +18,7 @@
         </div>
       </form>
     </div>
-    <div class="col-lg-4 col-6 text-right">
-      <p class="m-0">Customer Service</p>
-      <h5 class="m-0">+012 345 6789</h5>
-    </div>
+
   </div>
 </div>
 
@@ -67,17 +64,18 @@
           <div class="navbar-nav mr-auto py-0">
             <a [routerLink]="''"  class="nav-item nav-link active">Home</a>
             <a [routerLink]="'products'" class="nav-item nav-link">Products</a>
-            <a href="detail.html" class="nav-item nav-link">About Us</a>
+            <a href="" class="nav-item nav-link">About Us</a>
           </div>
-          <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-            <a href="" class="btn px-0">
-              <fa-icon [icon]="faHeart" class="text-primary"></fa-icon>
-              <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-            </a>
+
+          <div class="navbar-nav">
+              <a class="btn px-0 ml-3">
+                  <fa-icon [icon]="faUserCircle" class="text-primary"></fa-icon>
+              </a>
             <a href="" class="btn px-0 ml-3">
               <fa-icon [icon]="faShoppingCart" class="text-primary"></fa-icon>
               <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
             </a>
+
           </div>
         </div>
       </nav>
