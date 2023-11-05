@@ -10,13 +10,16 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-
+import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListPageComponent,
     HeaderComponent,
+    HomePageComponent,
+    AboutUsPageComponent,
+
     HomePageComponent,
     FooterComponent,
     LoginPageComponent,
