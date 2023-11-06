@@ -7,4 +7,35 @@ import { Component } from '@angular/core';
 })
 export class CheckoutPageComponent {
 
+  userData = [
+    {
+      firstname: '',
+      lastname: 'test1',
+      email: 'test2',
+      phone:'test3',
+      address:'test4',
+      country:'test5',
+      city:'test7',
+
+    },]
+
+  clientOrder = [
+    {
+      productname: 'p',
+      price: 'p1',
+
+
+    },
+    {
+      productname: 'p2',
+      price: 'p1',
+
+
+    },
+    {
+      productname: 'p',
+      price: 'p1',
+
+
+    }]
 }
