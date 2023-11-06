@@ -10,6 +10,7 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CategoryCarouselComponent } from './pages/home-page/category-carousel/category-carousel.component';
 import { MostSoldProductsComponent } from './pages/home-page/most-sold-products/most-sold-products.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
@@ -20,6 +21,9 @@ import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.compon
     ProductListPageComponent,
     HeaderComponent,
     HomePageComponent,
+    CategoryCarouselComponent,
+    MostSoldProductsComponent,
+    ProductDetailsComponent,
     AboutUsPageComponent,
 
     HomePageComponent,
