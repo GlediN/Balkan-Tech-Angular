@@ -1,0 +1,46 @@
+<div class="container-fluid mb-3">
+  <div class="row px-xl-5">
+    <div class="col-xl-12">
+      <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item position-relative active" style="height: auto;">
+            <ngb-carousel>
+              <ng-template ngbSlide *ngFor="let category of categories">
+                <img class="img-fluid" [src]="category.imageUrl" alt='{{category.name}}'>
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                  <div class="p-3" style="max-width: 700px;">
+                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{category.name}}</h1>
+                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{category.description}}</p>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+
+  <div class="row px-xl-5">
+    <div class="col-lg-8">
+<div id="header-carousel" class="carousel slide" data-ride="carousel" >
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="height: 410px;">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let category of categories">
+      <img class="img-fluid" [src]="category.imageUrl" alt="Image">
+      <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+        <div class="p-3" style="max-width: 700px;">
+          <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{category.name}}</h3>
+          <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+        </div>
+      </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</div></div></div>
+-->

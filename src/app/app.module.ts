@@ -8,9 +8,8 @@ import { ProductListPageComponent } from './pages/product-list-page/product-list
 import { HeaderComponent } from './shared/header/header.component';
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-
-import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
+import { CategoryCarouselComponent } from './pages/home-page/category-carousel/category-carousel.component';
+import { MostSoldProductsComponent } from './pages/home-page/most-sold-products/most-sold-products.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,8 @@ import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.compon
     ProductListPageComponent,
     HeaderComponent,
     HomePageComponent,
-    AboutUsPageComponent,
-
+    CategoryCarouselComponent,
+    MostSoldProductsComponent
   ],
   imports: [
     BrowserModule,
