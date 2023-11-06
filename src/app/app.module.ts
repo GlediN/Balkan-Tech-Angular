@@ -10,6 +10,9 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CategoryCarouselComponent } from './pages/home-page/category-carousel/category-carousel.component';
 import { MostSoldProductsComponent } from './pages/home-page/most-sold-products/most-sold-products.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+// @ts-ignore
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { MostSoldProductsComponent } from './pages/home-page/most-sold-products/
     HeaderComponent,
     HomePageComponent,
     CategoryCarouselComponent,
-    MostSoldProductsComponent
+    MostSoldProductsComponent,
+    CheckoutPageComponent,
+
   ],
   imports: [
     BrowserModule,
