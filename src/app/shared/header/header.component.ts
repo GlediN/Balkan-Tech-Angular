@@ -20,7 +20,9 @@ export class HeaderComponent  implements OnInit{
 
   }
   openLoginForm(){
-    const modalRef= this.modalService.open(LoginPageComponent)
+    this.modalService.open(LoginPageComponent)
   }
+
+
 }
 
