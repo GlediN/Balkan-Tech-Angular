@@ -6,6 +6,7 @@ import {LoginPageComponent} from "./pages/login-page/login-page.component";
 
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
 import {ProductDetailsComponent} from "./pages/product-details/product-details.component";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 
 const routes: Routes = [
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent},
   { path: 'product-detail', component: ProductDetailsComponent},
   { path: "login",component:LoginPageComponent},
+  { path: "signup",component:LoginPageComponent},
+  { path: "dashboard",component:DashboardComponent}
 
 ];
 

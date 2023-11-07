@@ -14,7 +14,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
-
+import {FormsModule} from "@angular/forms";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,16 +26,17 @@ import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.compon
     MostSoldProductsComponent,
     ProductDetailsComponent,
     AboutUsPageComponent,
-
     HomePageComponent,
     FooterComponent,
     LoginPageComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
