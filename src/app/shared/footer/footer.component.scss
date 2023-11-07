@@ -3,21 +3,19 @@ h2{
 }
 .footer{
   color: white;
-  background-color: #6C757D;
+  background-color: #353a3e; //changed this to a darker colour
   width: 100%;
   //margin: 3.5rem 2rem;
   padding: 1rem;
-}
-.contact-Info{
-  display: block;
-  margin: auto 5rem;
-}
-.footer{
   display: flex;
   flex-wrap: wrap;
-  position:fixed;
-  bottom:3rem;
+  position:relative; //e ndryshova nga fixed qe ishte pasi qendronte ne te njejtin vend ne faqe dhe mbivendosej ne permbajtje te ndryshme te faqes
+  /*bottom:3rem;*/ // hapesira qe krijohej poshte vinte nga kjo
 
+}
+.contact-Info{
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 a{
   color: white;
@@ -27,19 +25,17 @@ a:hover{
   color: rgb(200,200,200);
 }
 .account-footer{
-  margin: 0 2rem;
-
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .shopping-footer{
   margin-left: 3rem;
   margin-right: 3rem;
 }
-.account-footer{
-  margin-left: 3rem;
-  margin-right: 3rem;
-}
+
 .socials-footer{
   margin-left: 3rem;
   margin-right: 3rem;
 }
+
