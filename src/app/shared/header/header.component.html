@@ -2,8 +2,8 @@
   <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
     <div class="col-lg-4">
       <a href="" class="text-decoration-none">
-        <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
-        <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
+        <span class="h1 text-uppercase text-primary bg-dark px-2">Balkan</span>
+        <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Tech</span>
       </a>
     </div>
     <div class="col-lg-4 col-6 text-left">
@@ -21,10 +21,6 @@
 
   </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" (click)="openLoginForm()">
-  Login
-</button>
-<!--Button qe ben popup login form-->
 <div  class="container-fluid bg-dark mb-30">
   <div class="row px-xl-5">
     <div class="col-lg-3 d-none d-lg-block">
@@ -68,12 +64,12 @@
             <a [routerLink]="''"  class="nav-item nav-link active">Home</a>
             <a [routerLink]="'products'" class="nav-item nav-link">Products</a>
             <a [routerLink]="'about-us'" class="nav-item nav-link">About Us</a>
-            <a href="" class="nav-item nav-link">About Us</a>
           </div>
 
           <div class="navbar-nav">
+            <!--modali per sign in form-->
               <a class="btn px-0 ml-3">
-                  <fa-icon [icon]="faUserCircle" class="text-primary"></fa-icon>
+                  <fa-icon [icon]="faUserCircle" (click)="openLoginForm()" class="text-primary"></fa-icon>
               </a>
             <a href="" class="btn px-0 ml-3">
               <fa-icon [icon]="faShoppingCart" class="text-primary"></fa-icon>
