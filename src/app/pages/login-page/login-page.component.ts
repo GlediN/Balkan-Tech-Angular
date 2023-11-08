@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {faEnvelope} from "@fortawesome/free-solid-svg-icons/faEnvelope";
-import {faLock} from "@fortawesome/free-solid-svg-icons/faLock";
-import {faKey} from "@fortawesome/free-solid-svg-icons/faKey";
-
+import {faEnvelope, faLock} from "@fortawesome/free-solid-svg-icons";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-faPerson=faUser;
-faEnveloper=faEnvelope;
-faLock=faLock;
-faKey=faKey;
+
+  constructor(private modalService:NgbModal) {
+  }
   protected readonly faEnvelope = faEnvelope;
+  protected readonly faLock = faLock;
+
+  closeForm() {
+    this.modalService.dismissAll();
+  }
+
+
 }
