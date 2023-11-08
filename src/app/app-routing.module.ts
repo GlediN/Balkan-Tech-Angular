@@ -14,6 +14,7 @@ import {SendPromoEmailComponent} from "./admin/send-promo-email/send-promo-email
 import {PurchaseHistoryComponent} from "./admin/purchase-history/purchase-history.component";
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home-page', pathMatch: 'full' },
   { path: 'home-page', component: HomePageComponent },
@@ -30,7 +31,7 @@ const routes: Routes = [
     {path: 'manage-categories', component: ManageCategoriesComponent},
     {path: 'user-details', component: UserDetailsComponent},
     {path: 'send-promo-email', component: SendPromoEmailComponent},
-    {path: 'purchase-history', component: PurchaseHistoryComponent}
+    {path: 'purchase-history', component: PurchaseHistoryComponent},
 
   ]}
 

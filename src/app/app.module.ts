@@ -25,6 +25,7 @@ import { AdminComponent } from './admin/admin.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PurchaseHistoryComponent } from './admin/purchase-history/purchase-history.component';
 import { SendPromoEmailComponent } from './admin/send-promo-email/send-promo-email.component';
+import { EmailMessageComponent } from './admin/send-promo-email/email-message/email-message.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { SendPromoEmailComponent } from './admin/send-promo-email/send-promo-ema
     SidenavComponent,
     PurchaseHistoryComponent,
     SendPromoEmailComponent,
+    EmailMessageComponent,
   ],
   imports: [
     BrowserModule,
