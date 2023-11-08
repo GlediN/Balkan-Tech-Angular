@@ -14,4 +14,12 @@ faEnvelope=faEnvelope;
 faMoeny=faMoneyBill1Wave;
 faBasket=faShoppingBasket;
   protected readonly faUserCircle = faUserCircle;
+
+
+  saleTotal = "455$"
+  saleTotal2="784$"
+  saleTotal3="416$"
+  saleTotal4="138$"
+  saleTotal5="78$"
 }
+
