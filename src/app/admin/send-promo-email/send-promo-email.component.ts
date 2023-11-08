@@ -17,7 +17,6 @@ export class SendPromoEmailComponent {
   constructor(private modalService:NgbModal) {
   }
   ngOnInit():void{
-
   }
   openLoginForm(){
     this.modalService.open(EmailMessageComponent);
