@@ -1,27 +1,20 @@
-<div id="contact" class="contact-area section-padding">
-  <button type="button" class="btn-close position-absolute top-0 end-0 m-2 btn-" (click)="closeForm()" aria-label="Close " [routerLink]="'/dashboard/send-promo-email'"></button>
-  <div class="container">
-    <div class="section-title text-center">
-      <h1>Get in Touch</h1>
-      </div>
-    <div class="row">
-      <div class="col-lg-7">
-        <div class="contact">
-          <form class="form" name="enq" method="post" action="contact.php" onsubmit="return validation();">
-            <div class="row">
-              <div class="form-group col-md-12">
-                <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
-              </div>
-              <div class="form-group col-md-12">
-                <textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
-              </div>
-              <div class="col-md-12 text-center">
-                <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-contact-bg" title="Submit Your Message!" (click)="closeForm()" [routerLink]="'/dashboard/send-promo-email'">Send Message</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div><!--- END COL -->
-    </div><!--- END ROW -->
-  </div><!--- END CONTAINER -->
-</div>
+<button type="button" class="btn-close position-absolute top-0 end-0 m-2 btn-" (click)="closeForm()" aria-label="Close" ></button>
+<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
+<form class="mx-1 mx-md-4 row">
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <input ngbAutofocus type="text" id="subject" class="form-control" placeholder="Your Subject" />
+      <label class="form-label" for="subject"></label>
+    </div>
+  </div>
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <input type="text" id="text" class="form-control" placeholder="Message" />
+      <label class="form-label" for="text"></label>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mb-3 mb-lg-4">
+    <a href="http://localhost:4200/dashboard/send-promo-email" class="btn btn-primary btn-lg" (click)="closeForm()" [routerLink]="'/send-promo-emails'">Send</a>
+  </div>
+</form>
+
