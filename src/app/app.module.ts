@@ -10,6 +10,7 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,9 +21,9 @@
 
   </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" (click)="openLoginForm()">
-  Login
-</button>
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" >&lt;!&ndash;(click)=openLoginForm()&ndash;&gt;-->
+<!--  Login-->
+<!--</button>-->
 <!--Button qe ben popup login form-->
 <div  class="container-fluid bg-dark mb-30">
   <div class="row px-xl-5">
@@ -71,10 +71,12 @@
           </div>
 
           <div class="navbar-nav">
-              <a class="btn px-0 ml-3">
+              <a class="btn px-0 ml-3 header-button"  href="http://localhost:4200/login">
+                Login
                   <fa-icon [icon]="faUserCircle" class="text-primary"></fa-icon>
               </a>
-            <a href="" class="btn px-0 ml-3">
+            <a href="" class="btn px-0 ml-3 header-button">
+              Cart
               <fa-icon [icon]="faShoppingCart" class="text-primary"></fa-icon>
               <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
             </a>
