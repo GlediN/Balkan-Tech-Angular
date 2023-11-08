@@ -11,7 +11,7 @@ export class EmailMessageComponent {
   }
   ngOnInit():void{
   }
-  openLoginForm(){
-    this.modalService.open(EmailMessageComponent);
+  closeForm(){
+    this.modalService.dismissAll(EmailMessageComponent);
   }
 }

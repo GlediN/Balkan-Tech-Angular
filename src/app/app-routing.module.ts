@@ -12,7 +12,7 @@ import {ManageCategoriesComponent} from "./admin/manage-categories/manage-catego
 import {UserDetailsComponent} from "./admin/user-details/user-details.component";
 import {SendPromoEmailComponent} from "./admin/send-promo-email/send-promo-email.component";
 import {PurchaseHistoryComponent} from "./admin/purchase-history/purchase-history.component";
-
+import {EmailMessageComponent} from "./admin/send-promo-email/email-message/email-message.component";
 
 
 const routes: Routes = [
@@ -32,12 +32,8 @@ const routes: Routes = [
     {path: 'user-details', component: UserDetailsComponent},
     {path: 'send-promo-email', component: SendPromoEmailComponent},
     {path: 'purchase-history', component: PurchaseHistoryComponent},
-
+    {path: 'send-promo-email/email',component: EmailMessageComponent}
   ]}
-
-
-
-
 ];
 
 @NgModule({
