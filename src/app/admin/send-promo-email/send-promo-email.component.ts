@@ -18,10 +18,9 @@ export class SendPromoEmailComponent {
   }
   ngOnInit():void{
   }
-  closeLoginForm(){
-    this.modalService.dismissAll(EmailMessageComponent);
+  openForm(){
+    this.modalService.open(EmailMessageComponent);
   }
-
     protected readonly faShoppingBasket = faShoppingBasket;
 }
 
