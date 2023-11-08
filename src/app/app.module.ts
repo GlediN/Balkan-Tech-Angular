@@ -15,7 +15,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import {FormsModule} from "@angular/forms";
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BodyComponent } from './admin/body/body.component';
+import { SidenavComponent } from './admin/sidenav/sidenav.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ProductsComponent } from './admin/products/products.component';
+import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
+import { UserDetailsComponent } from './admin/user-details/user-details.component';
+import { AdminComponent } from './admin/admin.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +36,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     HomePageComponent,
     FooterComponent,
     LoginPageComponent,
+    BodyComponent,
+    SidenavComponent,
     DashboardComponent,
+    ProductsComponent,
+    ManageCategoriesComponent,
+    UserDetailsComponent,
+    AdminComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +51,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     NgbModule,
     FontAwesomeModule,
     FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

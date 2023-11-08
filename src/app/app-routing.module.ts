@@ -3,10 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {ProductListPageComponent} from "./pages/product-list-page/product-list-page.component";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
-
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
 import {ProductDetailsComponent} from "./pages/product-details/product-details.component";
-import {DashboardComponent} from "./pages/dashboard/dashboard.component";
+import {AdminComponent} from "./admin/admin.component";
+import {DashboardComponent} from "./admin/dashboard/dashboard.component";
+import {ProductsComponent} from "./admin/products/products.component";
+import {ManageCategoriesComponent} from "./admin/manage-categories/manage-categories.component";
+import {UserDetailsComponent} from "./admin/user-details/user-details.component";
 
 
 const routes: Routes = [
@@ -17,7 +20,17 @@ const routes: Routes = [
   { path: 'product-detail', component: ProductDetailsComponent},
   { path: "login",component:LoginPageComponent},
   { path: "signup",component:LoginPageComponent},
-  { path: "dashboard",component:DashboardComponent}
+  { path: "dashboard",component:AdminComponent,
+  children:[{
+    path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'products', component: ProductsComponent},
+    {path: 'manage-categories', component: ManageCategoriesComponent},
+    {path: 'user-details', component: UserDetailsComponent
+  }]}
+
+
+
 
 ];
 
