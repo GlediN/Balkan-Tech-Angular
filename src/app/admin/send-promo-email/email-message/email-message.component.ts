@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-email-message',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./email-message.component.scss']
 })
 export class EmailMessageComponent {
-
+  constructor(private modalService:NgbModal) {
+  }
+  ngOnInit():void{
+  }
+  openLoginForm(){
+    this.modalService.open(EmailMessageComponent);
+  }
 }

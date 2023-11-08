@@ -18,8 +18,8 @@ export class SendPromoEmailComponent {
   }
   ngOnInit():void{
   }
-  openLoginForm(){
-    this.modalService.open(EmailMessageComponent);
+  closeLoginForm(){
+    this.modalService.dismissAll(EmailMessageComponent);
   }
 
     protected readonly faShoppingBasket = faShoppingBasket;
