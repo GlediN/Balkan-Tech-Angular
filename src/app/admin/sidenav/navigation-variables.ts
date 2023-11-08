@@ -16,17 +16,17 @@ export const navbarData = [
   },
   {
     routeLink: 'purchase-history',
-    icon: 'fal fa-cog',
+    icon: 'fal fa-money-bill-wave',
     label: 'Purchase History'
   },
   {
     routeLink: 'send-promo-email',
-    icon: 'fal fa-cog',
+    icon: 'fal fa-envelope',
     label: 'Promotional Email'
   },
   {
     routeLink: 'user-details',
-    icon: 'fal fa-cog',
+    icon: 'fal fa-users',
     label: 'User Details'
   },
   {
