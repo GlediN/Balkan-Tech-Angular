@@ -10,6 +10,8 @@ import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 import {ProductsComponent} from "./admin/products/products.component";
 import {ManageCategoriesComponent} from "./admin/manage-categories/manage-categories.component";
 import {UserDetailsComponent} from "./admin/user-details/user-details.component";
+import {SendPromoEmailComponent} from "./admin/send-promo-email/send-promo-email.component";
+import {PurchaseHistoryComponent} from "./admin/purchase-history/purchase-history.component";
 
 
 const routes: Routes = [
@@ -26,8 +28,11 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'products', component: ProductsComponent},
     {path: 'manage-categories', component: ManageCategoriesComponent},
-    {path: 'user-details', component: UserDetailsComponent
-  }]}
+    {path: 'user-details', component: UserDetailsComponent},
+    {path: 'send-promo-email', component: SendPromoEmailComponent},
+    {path: 'purchase-history', component: PurchaseHistoryComponent}
+
+  ]}
 
 
 

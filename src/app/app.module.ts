@@ -23,6 +23,8 @@ import { ManageCategoriesComponent } from './admin/manage-categories/manage-cate
 import { UserDetailsComponent } from './admin/user-details/user-details.component';
 import { AdminComponent } from './admin/admin.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { PurchaseHistoryComponent } from './admin/purchase-history/purchase-history.component';
+import { SendPromoEmailComponent } from './admin/send-promo-email/send-promo-email.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     UserDetailsComponent,
     AdminComponent,
     SidenavComponent,
+    PurchaseHistoryComponent,
+    SendPromoEmailComponent,
   ],
   imports: [
     BrowserModule,

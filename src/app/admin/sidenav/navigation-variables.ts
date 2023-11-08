@@ -15,6 +15,16 @@ export const navbarData = [
     label: 'Manage Products'
   },
   {
+    routeLink: 'purchase-history',
+    icon: 'fal fa-cog',
+    label: 'Purchase History'
+  },
+  {
+    routeLink: 'send-promo-email',
+    icon: 'fal fa-cog',
+    label: 'Promotional Email'
+  },
+  {
     routeLink: 'user-details',
     icon: 'fal fa-cog',
     label: 'User Details'
