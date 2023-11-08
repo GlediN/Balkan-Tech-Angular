@@ -22,12 +22,12 @@ export class HeaderComponent  implements OnInit{
   ngOnInit():void{
 
   }
-  openLoginForm(){
-    const modalOptions: NgbModalOptions = {
-      backdrop: "static", // This makes the backdrop completely transparent
-    };
-    const modalRef= this.modalService.open(LoginPageComponent,modalOptions)
-  }
+  // openLoginForm(){
+  //   const modalOptions: NgbModalOptions = {
+  //     backdrop: "static", // This makes the backdrop completely transparent
+  //   };
+  //   const modalRef= this.modalService.open(LoginPageComponent,modalOptions)
+  // }
   //Method qe ben exec pop up form
 
 
