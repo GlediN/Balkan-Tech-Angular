@@ -43,9 +43,7 @@ export class SendPromoEmailComponent {
 
 
   sendEmail(){}
-  sendEmailToUser(user: any) {
 
-  }
 
 }
 
