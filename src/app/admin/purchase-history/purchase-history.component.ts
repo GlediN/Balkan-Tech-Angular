@@ -15,11 +15,31 @@ faMoeny=faMoneyBill1Wave;
 faBasket=faShoppingBasket;
   protected readonly faUserCircle = faUserCircle;
 
+users = [
+    {
+      id:"1",
+      date:"12/12/1222",
+      name:"emri",
+      surname:"mbiemri",
+      email:"asdasd@gmail.com",
+      address:"adresa",
+      receipt:"asdasdasd.pdf",
+  totalPrice:"150"
+    },
+  {
+    id:"2",
+    date:"12/12/1222",
+    name:"emri2",
+    surname:"mbiemri2",
+    email:"asdasd@gmail.com2",
+    address:"adresa2",
+    receipt:"asdasdasd2.pdf",
+    totalPrice:"1502"
+  },
 
-  saleTotal = "455$"
-  saleTotal2="784$"
-  saleTotal3="416$"
-  saleTotal4="138$"
-  saleTotal5="78$"
+    ]
+
+
+
 }
 
