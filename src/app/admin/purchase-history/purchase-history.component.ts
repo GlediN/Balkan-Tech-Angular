@@ -4,8 +4,6 @@ import {faMoneyBill1Wave} from "@fortawesome/free-solid-svg-icons/faMoneyBill1Wa
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons/faShoppingBasket";
 import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
 import {PurchaseHistoryUserService} from "./purchase-history-user.service";
-import {UserService} from "../user-details/user.service";
-
 @Component({
   selector: 'app-purchase-history',
   templateUrl: './purchase-history.component.html',
@@ -29,7 +27,7 @@ users = [{
   //users i merr nga purchase-history-user.service.ts
 }
     ]
-  constructor(private userService: UserService) { }
+  constructor(private userService: PurchaseHistoryUserService) { }
 
   ngOnInit() {
     // Fetch user data when the component initializes

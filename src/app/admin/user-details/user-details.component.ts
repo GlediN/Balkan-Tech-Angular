@@ -1,6 +1,5 @@
 import {booleanAttribute, Component} from '@angular/core';
 import {UserService} from "./user.service";
-import {PurchaseHistoryUserService} from "../purchase-history/purchase-history-user.service";
 
 @Component({
   selector: 'app-settings',
@@ -9,22 +8,24 @@ import {PurchaseHistoryUserService} from "../purchase-history/purchase-history-u
 })
 export class UserDetailsComponent {
 
-  users=[{
+  users1 = [{
     id:'',
-    date_of_register:'',
+    date:'',
     name:'',
     surname:'',
     email:'',
     address:'',
-    isAdmin:null
-  }]
-  constructor(private userService: PurchaseHistoryUserService) { }
+    isAdmin:'',
+    //users i merr nga purchase-history-user.service.ts
+  }
+  ]
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     // Fetch user data when the component initializes
     this.userService.getUsers().subscribe(users => {
-      this.users = users;
-      console.log('Fetched users:', this.users);
+      this.users1 = users;
+      console.log('Fetched users:', this.users1);
     });
   }
 

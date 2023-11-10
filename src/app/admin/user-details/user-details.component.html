@@ -1,1 +1,41 @@
-<p>User Detials Work</p>
+<h1>Purchase History</h1>
+<div class="table-responsive">
+  <table class="table user-table mb-0">
+    <thead>
+    <tr>
+      <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Date</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Name Surname</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">E-mail</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Address</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Is Admin</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Download Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users1">
+      <td>
+        <h6 class="font-medium">{{user.id}}</h6>
+      </td>
+      <td>
+        <h6 class="font-medium">{{user.date}}</h6>
+      </td>
+      <td>
+        <h6 class="font-medium">{{user.name}} {{user.surname}}</h6>
+      </td>
+      <td>
+        <h6 class="font-medium">{{user.email}}</h6>
+      </td>
+      <td>
+        <h6 class="font-medium">{{user.address}}</h6>
+      </td>
+      <td>
+        <h6 class="font-medium">{{user.isAdmin}}</h6>
+      </td>
+      <td>
+        <button type="button"   class="btn btn-circle btn-sm btn-circle"><i class="fa fa-cloud-download-alt"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
