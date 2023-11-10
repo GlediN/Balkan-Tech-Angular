@@ -10,9 +10,19 @@ import {EmailMessageComponent} from "./email-message/email-message.component";
 })
 export class SendPromoEmailComponent {
   emailList=[
-    "gledi.com",
-    "rezart.com",
-    "arber.com"
+    {
+      id: 1,
+      email:"gledi.com",
+    },
+    {
+      id: 2,
+      email: "arbri.com",
+    },
+    {
+      id:3,
+      email:"rezart.com",
+    },
+
   ]
   constructor(private modalService:NgbModal) {
   }
@@ -22,5 +32,18 @@ export class SendPromoEmailComponent {
     this.modalService.open(EmailMessageComponent);
   }
     protected readonly faShoppingBasket = faShoppingBasket;
+
+
+  emailSubject: string = '';
+  emailBody: string = '';
+
+  sendEmails() {
+
+  }
+
+
+  sendEmail(){}
+
+
 }
 

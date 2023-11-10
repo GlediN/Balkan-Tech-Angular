@@ -1,63 +1,36 @@
 <div class="card-head">
   <h2>Email Notifications</h2>
 </div>
-<div class="card-header d-flex justify-content-between" >
-  <h4>Email List</h4>
-  <button class="flex-shrink-0 p-1 align-content-end btn btn-light p-1" (click)="openForm()">Send Email To All</button>
-</div>
+
 <div>
-  <ul class="list-group list-group-flush">
-    <!--List-item-->
-    <li class="list-group-item pt-0">
-      <div class="d-flex align-items-center">
-        <div class="flex-shrink-0 me-3">
+  <!-- Email Form -->
+  <form (submit)="sendEmail()">
+    <div class="mb-3">
+      <label for="emailSubject" class="form-label">Subject:</label>
+      <input type="text" class="form-control" id="emailSubject" [(ngModel)]="emailSubject" required>
+    </div>
+    <div class="mb-3">
+      <label for="emailBody" class="form-label">Email Body:</label>
+      <textarea class="form-control" id="emailBody" [(ngModel)]="emailBody" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Email</button>
+  </form>
 
-          <!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar rounded-circle" />-->
-        </div>
+  <!-- User List -->
+
+  <div class="card-header d-flex justify-content-between">
+    <h4>Email List</h4>
+  </div>
+    <li class="list-group-item pt-0" *ngFor="let user of emailList">
+      <div class="d-flex align-items-center">
         <div class="flex-grow-1">
           <h6 class="mb-0"></h6>
-          <p class="mb-0 text-muted">{{emailList.at(0)}}</p>
+          <p class="mb-0 text-muted">{{ user.email }}</p>
         </div>
         <div class="flex-shrink-0 p-1 text-end">
-          <span>
-            <button class="btn btn-light p-1 bg-secondary" >Send Email</button>
-          </span>
+          <a class="btn btn-light p-1 bg-secondary" [href]="'mailto:' + user.email">Send Email</a>
         </div>
       </div>
     </li>
-    <li class="list-group-item pt-0">
-      <div class="d-flex align-items-center">
-        <div class="flex-shrink-0 me-3">
 
-          <!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar rounded-circle" />-->
-        </div>
-        <div class="flex-grow-1">
-          <h6 class="mb-0"></h6>
-          <p class="mb-0 text-muted">{{emailList.at(1)}}</p>
-        </div>
-        <div class="flex-shrink-0 p-1 text-end">
-          <span>
-            <button class="btn btn-light p-1 bg-secondary" >Send Email</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item pt-0">
-      <div class="d-flex align-items-center">
-        <div class="flex-shrink-0 me-3">
-
-          <!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar rounded-circle" />-->
-        </div>
-        <div class="flex-grow-1">
-          <h6 class="mb-0"></h6>
-          <p class="mb-0 text-muted">{{emailList.at(2)}}</p>
-        </div>
-        <div class="flex-shrink-0 p-1 text-end">
-          <span>
-            <button class="btn btn-light p-1 bg-secondary">Send Email</button>
-          </span>
-        </div>
-      </div>
-    </li>
-  </ul>
 </div>

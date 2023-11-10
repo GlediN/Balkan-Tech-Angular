@@ -1,110 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xl-12 mb-3 mb-lg-5">
-      <div class="card">
-        <div class="d-flex card-header justify-content-between">
-          <h5 class="me-3 mb-0">Latest Sales</h5>
-          <h5>Total sale</h5>
+<h1>Purchase History</h1>
+<div class="table-responsive">
+          <table class="table user-table mb-0">
+            <thead>
+            <tr>
+              <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Date</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Name Surname</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">E-mail</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Address</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Total Price</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Receipt</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <td>
+                <h6 class="font-medium">{{user.id}}</h6>
+              </td>
+              <td>
+                <h6 class="font-medium">{{user.date}}</h6>
+              </td>
+              <td>
+                <h6 class="font-medium">{{user.name}} {{user.surname}}</h6>
+              </td>
+              <td>
+                <h6 class="font-medium">{{user.email}}</h6>
+              </td>
+              <td>
+                <h6 class="font-medium">{{user.address}}</h6>
+              </td>
+              <td>
+                <h6 class="font-medium">{{user.totalPrice}}</h6>
+              </td>
+              <td>
+                //TODO
+                <button type="button" [routerLink]="'user.receipt'" class="btn btn-circle btn-sm btn-circle"><i class="fa fa-cloud-download-alt"></i> </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <!--List-item-->
-            <li class="list-group-item pt-0">
-              <div class="d-flex align-items-center">
-                <div class="flex-shrink-0 me-3">
-                  <fa-icon [icon]="faBasket" class="text-primary"></fa-icon>
-                  <!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar rounded-circle" />-->
-                </div>
-                <div class="flex-grow-1">
-                  <h6 class="mb-0">Inara Britt</h6>
-                  <p class="mb-0 text-muted">Georgia, USA</p>
-                </div>
-                <div class="flex-shrink-0 text-end">
-                                    <span>
-                          <p>{{saleTotal}}</p>
-
-                </span>
-              </div>
-        </div>
-        </li>
-        <!--List-item-->
-        <li class="list-group-item">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0 me-3">
-              <fa-icon [icon]="faBasket" class="text-primary"></fa-icon>
-              <!--                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="avatar rounded-circle" />-->
-            </div>
-            <div class="flex-grow-1">
-              <h6 class="mb-0">Eduard Franz</h6>
-              <p class="mb-0 text-muted">London, UK</p>
-            </div>
-            <div class="flex-shrink-0 text-end">
-                                    <span>
-                                      <p>{{saleTotal2}}</p>
-                                    </span>
-            </div>
-          </div>
-        </li>
-        <!--List-item-->
-        <li class="list-group-item">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0 me-3">
-              <fa-icon [icon]="faBasket" class="text-primary"></fa-icon>
-
-              <!--                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="avatar rounded-circle" />-->
-            </div>
-            <div class="flex-grow-1">
-              <h6 class="mb-0">Gianluca Darby</h6>
-              <p class="mb-0 text-muted">São Paulo, Brazil</p>
-            </div>
-            <div class="flex-shrink-0 text-end">
-                                    <span>
-                                       {{saleTotal3}}
-                                    </span>
-            </div>
-          </div>
-        </li>
-        <!--List-item-->
-        <li class="list-group-item">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0 me-3">
-              <fa-icon [icon]="faBasket" class="text-primary"></fa-icon>
-
-              <!--                  <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="" class="avatar rounded-circle" />-->
-            </div>
-            <div class="flex-grow-1">
-              <h6 class="mb-0">Milana Myles</h6>
-              <p class="mb-0 text-muted">Marseille, France</p>
-            </div>
-            <div class="flex-shrink-0 text-end">
-                                    <span>
-                                       {{saleTotal4}}
-                                    </span>
-            </div>
-          </div>
-        </li>
-        <!--List-item-->
-        <li class="list-group-item pb-0">
-          <div class="d-flex align-items-center">
-            <div class="flex-shrink-0 me-3">
-              <fa-icon [icon]="faBasket" class="text-primary"></fa-icon>
-
-              <!--                  <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" class="avatar rounded-circle" />-->
-            </div>
-            <div class="flex-grow-1">
-              <h6 class="mb-0">Taisiia Oluchi</h6>
-              <p class="mb-0 text-muted">Durban, SA</p>
-            </div>
-            <div class="flex-shrink-0 text-end">
-                                    <span>
-                                       {{saleTotal5}}
-                                    </span>
-            </div>
-          </div>
-        </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
