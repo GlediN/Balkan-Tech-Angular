@@ -1,0 +1,57 @@
+<section>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-10">
+            <div class="card-body p-0">
+                <div class="row g-0">
+                    <div class="col-lg-6">
+                        <div class="p-5 bg-primary text-dark">
+                            <h3 class="fw-normal mb-4">User Registration</h3>
+                            <div class="row mb-4 pb-2">
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" placeholder="Enter First Name" class="form-control form-control-lg" [(ngModel)]="name" name="firstName" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="text" placeholder="Enter Last Name" class="form-control form-control-lg" [(ngModel)]="surname" name="lastName" />
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Enter Phone Number" class="form-control form-control-lg" [(ngModel)]="contactNumber" name="phoneNumber" />
+                            <br>
+                            <input type="text" placeholder="Enter Email" class="form-control form-control-lg" [(ngModel)]="email" name="email" />
+                            <br>
+                            <input type="password" placeholder="Enter Password" class="form-control form-control-lg" [(ngModel)]="password" name="password" />
+                            <br>
+                            <select class="form-select form-select-lg" [(ngModel)]="subscription" name="sendPromotionalEmail">
+                                <option [ngValue]="true">Yes, send promotional email</option>
+                                <option [ngValue]="false">No, do not send promotional email</option>
+                            </select>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5 bg-dark text-primary">
+                            <h3 class="fw-normal mb-4 text-primary">Mailing Details</h3>
+                                        <input type="text" placeholder="Enter Address" class="form-control form-control-lg" [(ngModel)]="address" name="address" />
+                                        <br>
+                                        <input type="text" placeholder="Enter City" class="form-control form-control-lg" [(ngModel)]="city" name="city" />
+                                        <br>
+                                        <input type="text" placeholder="Enter Country" class="form-control form-control-lg" [(ngModel)]="country" name="country" />
+                                        <br>
+                                        <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                                            <input type="checkbox" class="form-check-input me-3" [(ngModel)]="acceptTerms" name="acceptTerms" /> I do accept the Terms and Conditions of your site.
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn-light btn-lg" [disabled]="!isFormValid()" (click)="register()" data-mdb-ripple-color="dark"> Register </button>
+                                        </div><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
