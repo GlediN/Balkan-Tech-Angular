@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./checkout-page.component.scss']
 })
 export class CheckoutPageComponent {
+  name: string = '';
+  surname: string = '';
+  contactNumber: string = '';
+  email: string = '';
+  address: string = '';
+  country: string = '';
+  products:string = '';
+  totalPrice:string=this.products
 
   userData = [
     {
