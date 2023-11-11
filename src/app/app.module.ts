@@ -26,6 +26,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PurchaseHistoryComponent } from './admin/purchase-history/purchase-history.component';
 import { SendPromoEmailComponent } from './admin/send-promo-email/send-promo-email.component';
 import { EmailMessageComponent } from './admin/send-promo-email/email-message/email-message.component';
+import {HttpClientModule} from "@angular/common/http";
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +54,7 @@ import { EmailMessageComponent } from './admin/send-promo-email/email-message/em
     PurchaseHistoryComponent,
     SendPromoEmailComponent,
     EmailMessageComponent,
+    SignupPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { EmailMessageComponent } from './admin/send-promo-email/email-message/em
     NgbModule,
     FontAwesomeModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
