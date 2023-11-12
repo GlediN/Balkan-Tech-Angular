@@ -29,8 +29,6 @@ import { EmailMessageComponent } from './admin/send-promo-email/email-message/em
 import {HttpClientModule} from "@angular/common/http";
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
-import { SidenavproductlistComponent } from './pages/product-list-page/sidenavproductlist/sidenavproductlist.component';
-import { ProductlistbodyComponent } from './pages/product-list-page/productlistbody/productlistbody.component';
 
 
 @NgModule({
@@ -59,8 +57,6 @@ import { ProductlistbodyComponent } from './pages/product-list-page/productlistb
     EmailMessageComponent,
     SignupPageComponent,
     CheckoutPageComponent,
-    SidenavproductlistComponent,
-    ProductlistbodyComponent
   ],
   imports: [
     BrowserModule,
