@@ -7,7 +7,7 @@
         <div class="product-img position-relative overflow-hidden" >
           <img class="img-fluid w-100" [src]="product.imageUrl" alt="">
           <div class="product-action">
-            <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" href="">Add to cart</a><br>
+            <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" (click)="addToCart(product)">Add to cart</a><br>
           </div>
         </div>
         <div class="text-center py-4">

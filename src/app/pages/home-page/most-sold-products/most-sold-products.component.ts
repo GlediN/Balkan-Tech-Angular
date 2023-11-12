@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {faCartShopping, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {CartService} from "../../../services/cart.service";
 
 @Component({
   selector: 'app-most-sold-products',
@@ -91,4 +92,12 @@ export class MostSoldProductsComponent {
 
   protected readonly faSearch = faSearch;
   protected readonly faCartShopping = faCartShopping;
+
+  constructor(private cartService: CartService) {}
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    console.log('Item added to cart:', product);
+  }
+
 }

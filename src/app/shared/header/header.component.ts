@@ -4,6 +4,7 @@ import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginPageComponent} from "../../pages/login-page/login-page.component";
 import {WeatherService} from "../../services/weather.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -17,14 +18,20 @@ import {WeatherService} from "../../services/weather.service";
   userLocation: any;
   temperature: number = 0;
   iconSrc: string ="";
+  clientOrderCount: number = 0;
   constructor(private modalService:NgbModal,
-              private weatherService: WeatherService) {
+              private weatherService: WeatherService,
+              private cartService: CartService) {
   }
 
     ngOnInit(): void {
       this.weatherService.getUserLocation().subscribe((location) => {
         this.userLocation = location;
         this.getTemperatureAndDisplay();
+      });
+
+      this.cartService.cartItemsChanged.subscribe(() => {
+        this.clientOrderCount = this.cartService.getCartItems().length;
       });
     }
 
@@ -47,6 +54,12 @@ import {WeatherService} from "../../services/weather.service";
   }
 
   isNavbarCollapsed = true;
+
+  get totalQuantity() {
+    return this.cartService.getTotalQuantity();
+  }
+
+
 
 }
 

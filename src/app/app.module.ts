@@ -28,6 +28,7 @@ import { SendPromoEmailComponent } from './admin/send-promo-email/send-promo-ema
 import { EmailMessageComponent } from './admin/send-promo-email/email-message/email-message.component';
 import {HttpClientModule} from "@angular/common/http";
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     SendPromoEmailComponent,
     EmailMessageComponent,
     SignupPageComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import {SendPromoEmailComponent} from "./admin/send-promo-email/send-promo-email
 import {PurchaseHistoryComponent} from "./admin/purchase-history/purchase-history.component";
 import {EmailMessageComponent} from "./admin/send-promo-email/email-message/email-message.component";
 import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
+import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'product-detail', component: ProductDetailsComponent},
   { path: "login",component:LoginPageComponent},
   { path: "signup",component:SignupPageComponent},
+  { path: "checkout",component:CheckoutPageComponent},
   { path: "dashboard",component:AdminComponent,
   children:[{
     path: '', redirectTo: 'dashboard', pathMatch: 'full'},
