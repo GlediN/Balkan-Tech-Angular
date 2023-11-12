@@ -33,8 +33,7 @@
                 <h6 class="font-medium">{{user.totalPrice}}</h6>
               </td>
               <td>
-                //TODO
-                <button type="button" [routerLink]="'user.receipt'" class="btn btn-circle btn-sm btn-circle"><i class="fa fa-cloud-download-alt"></i> </button>
+                <button type="button"   (click)="downloadJson(user.id)" class="btn btn-circle btn-sm btn-circle"><i class="fa fa-cloud-download-alt"></i></button>
               </td>
             </tr>
             </tbody>
