@@ -19,6 +19,6 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getMostSoldProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url+"/product/get");
+    return this.http.get<Product[]>(this.url+"/product/most-sold-products");
   }
 }
