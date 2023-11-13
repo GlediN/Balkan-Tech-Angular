@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
 import { faHeart, faShoppingCart, faSearch } from "@fortawesome/free-solid-svg-icons";
 import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginPageComponent} from "../../pages/login-page/login-page.component";
 import {WeatherService} from "../../services/weather.service";
 import {CartService} from "../../services/cart.service";
+import {NavigationStart, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ import {CartService} from "../../services/cart.service";
   clientOrderCount: number = 0;
   constructor(private modalService:NgbModal,
               private weatherService: WeatherService,
-              private cartService: CartService) {
+              public cartService: CartService,
+              private router: Router) {
   }
 
     ngOnInit(): void {
@@ -33,7 +35,7 @@ import {CartService} from "../../services/cart.service";
       this.cartService.cartItemsChanged.subscribe(() => {
         this.clientOrderCount = this.cartService.getCartItems().length;
       });
-    }
+      }
 
   getTemperatureAndDisplay() {
     if (this.userLocation && this.userLocation.city) {
@@ -55,10 +57,39 @@ import {CartService} from "../../services/cart.service";
 
   isNavbarCollapsed = true;
 
-  get totalQuantity() {
-    return this.cartService.getTotalQuantity();
+
+
+
+  showCartDropdown = false;
+  @ViewChild('cartDropdown') cartDropdown!: ElementRef;
+
+
+  @HostListener('document:click', ['$event'])
+  documentClick() {
+    this.closeCartDropdown();
+  }
+  private isClickInsideDropdown(event: Event): boolean {
+    const clickedElement = event.target as HTMLElement;
+    return this.cartDropdown.nativeElement.contains(clickedElement) ||
+      Array.from(this.cartDropdown.nativeElement.children).some((child) => {
+        return child instanceof HTMLElement && child.contains(clickedElement);
+      });
   }
 
+  isCartDropdownHovered = false;
+
+  toggleCartDropdown(event: Event) {
+    event.stopPropagation();
+    this.showCartDropdown = !this.showCartDropdown;
+  }
+
+  closeCartDropdown() {
+    this.showCartDropdown = false;
+  }
+  proceedToCheckout() {
+    this.router.navigate(['/checkout']);
+    this.showCartDropdown = false;
+  }
 
 
 }

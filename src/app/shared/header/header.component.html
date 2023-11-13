@@ -71,10 +71,38 @@
             <a class="btn px-0 ml-3">
               <fa-icon [icon]="faUserCircle" (click)="openLoginForm()" class="text-primary"></fa-icon>
             </a>
-            <a [routerLink]="'/checkout'" class="btn px-0 ml-3">
 
+            <!--cart-->
+            <a class="btn px-0 ml-3" (click)="toggleCartDropdown($event)">
               <fa-icon [icon]="faShoppingCart" class="text-primary"></fa-icon>
-              <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{totalQuantity}}</span>
+              <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{cartService.getTotalQuantity()}}</span>
+              <div class="cart-dropdown" *ngIf="showCartDropdown" (click)="closeCartDropdown()">
+                <ng-container *ngIf="cartService.getCartItems().length > 0; else noItems">
+                  <div style="text-align: center;">
+                    <span class="text-dark" style="font-weight: bold"> Cart Items</span>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div *ngFor="let product of cartService.getCartItems()">
+                    <span style="font-weight: bold"> {{ product.name }}
+                    <span class="fal fa-minus-circle" style="margin-left: 5px;padding: 0rem 0.75rem;" (click)="cartService.decreaseQuantity(product.id)"></span>
+                      <span class="fal fa-plus-circle active" (click)="cartService.increaseQuantity(product.id)"></span>
+                    </span><br>
+                    {{product.quantity}} x <span style="font-weight: bold">{{product.price}}$</span>
+                    <br>
+                    Subtotal: <span style="font-weight: bold; text-align: right;">{{product.price * (product.quantity ?? 1)}}$</span>
+                    <div class="dropdown-divider"></div>
+                  </div>
+                  <span style="font-weight: bold">Total: {{cartService.getTotalPrice()}}</span>
+                  <div class="dropdown-divider"></div>
+                  <div class="row">
+                    <button class="btn btn-secondary btn-sm" style="text-align: center; font-weight: bold; width: 25%; margin-left: 5%; margin-right: 5%" (click)="cartService.clearCart()">Clear</button>
+                    <button class="btn btn-primary btn-sm" style="text-align: center; font-weight: bold; width: 60%" (click)="proceedToCheckout()">Checkout</button>
+                  </div>
+                </ng-container>
+                <ng-template #noItems>
+                  <div class="text-center text-muted">No items in the cart</div>
+                </ng-template>
+              </div>
             </a>
           </div>
         </div>
