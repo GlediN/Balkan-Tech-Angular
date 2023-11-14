@@ -55,8 +55,6 @@ import {NavigationStart, Router} from "@angular/router";
     this.modalService.open(LoginPageComponent)
   }
 
-  isNavbarCollapsed = true;
-
 
 
 
@@ -90,6 +88,11 @@ import {NavigationStart, Router} from "@angular/router";
     this.router.navigate(['/checkout']);
     this.showCartDropdown = false;
   }
+
+    isNavbarCollapsed: boolean = true;
+    toggleNavbar() {
+        this.isNavbarCollapsed = !this.isNavbarCollapsed;
+    }
 
 
 }

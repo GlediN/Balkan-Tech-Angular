@@ -6,23 +6,11 @@
         <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Tech</span>
       </a>
     </div>
-    <div class="col-lg-4 col-6 text-left">
-      <form action="">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for products">
-          <div class="input-group-append">
-            <span class="input-group-text bg-transparent text-primary">
-              <fa-icon [icon]="faSearch" class="text-primary"></fa-icon>
-            </span>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-lg-4 text-right">
-      <p *ngIf="userLocation && temperature" class="weather-info">
+    <div class="col-lg-8 text-right">
+      <div class="weather-info" *ngIf="userLocation && temperature">
         <span>{{ userLocation.city }}, {{ temperature }}°C</span>
         <img *ngIf="iconSrc" [src]="iconSrc" alt="Weather Icon" class="weather-icon">
-      </p>
+      </div>
     </div>
   </div>
 </div>
@@ -51,30 +39,40 @@
     <div class="col-lg-9">
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
         <a href="" class="text-decoration-none d-block d-lg-none">
-          <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
-          <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
+          <span class="h1 text-uppercase text-dark bg-light px-2">Balkan</span>
+          <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Tech</span>
         </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <button type="button" class="navbar-toggler" (click)="toggleNavbar()">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="collapse navbar-collapse justify-content-between" [ngClass]="{'show': !isNavbarCollapsed}" id="navbarCollapse">
           <div class="navbar-nav mr-auto py-0">
             <a [routerLink]="''" class="nav-item nav-link active">Home</a>
             <a [routerLink]="'products'" class="nav-item nav-link">Products</a>
             <a [routerLink]="'about-us'" class="nav-item nav-link">About Us</a>
-
-
+          </div>
+          <div class="col-lg-4 col-6 text-left">
+            <form action="">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for products">
+                <div class="input-group-append">
+            <span class="input-group-text bg-transparent text-primary">
+              <fa-icon [icon]="faSearch" class="text-primary"></fa-icon>
+            </span>
+                </div>
+              </div>
+            </form>
           </div>
 
           <div class="navbar-nav">
             <!-- modali per sign in form -->
             <a class="btn px-0 ml-3">
-              <fa-icon [icon]="faUserCircle" (click)="openLoginForm()" class="text-primary"></fa-icon>
+              <fa-icon [icon]="faUserCircle" (click)="openLoginForm()" class="text-primary icons-custom-font-size"></fa-icon>
             </a>
 
             <!--cart-->
             <a class="btn px-0 ml-3" (click)="toggleCartDropdown($event)">
-              <fa-icon [icon]="faShoppingCart" class="text-primary"></fa-icon>
+              <fa-icon [icon]="faShoppingCart" class="text-primary icons-custom-font-size"></fa-icon>
               <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{cartService.getTotalQuantity()}}</span>
               <div class="cart-dropdown" *ngIf="showCartDropdown" (click)="closeCartDropdown()">
                 <ng-container *ngIf="cartService.getCartItems().length > 0; else noItems">

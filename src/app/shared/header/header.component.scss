@@ -18,7 +18,6 @@
 }
 
 .col-lg-4{
-  padding: 0;
 }
 
 .cart-dropdown {
@@ -35,4 +34,25 @@
 .cart-dropdown button {
   width: 100%;
   text-align: left;
+}
+
+header{
+  z-index: 2000;
+  position: sticky;
+  top:0;
+}
+
+.floating-cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.custom-vert-align {
+  margin-top: 3px;
+}
+
+.icons-custom-font-size {
+font-size: 1.6rem;
 }
