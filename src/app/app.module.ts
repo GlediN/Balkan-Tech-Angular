@@ -26,9 +26,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PurchaseHistoryComponent } from './admin/purchase-history/purchase-history.component';
 import { SendPromoEmailComponent } from './admin/send-promo-email/send-promo-email.component';
 import { EmailMessageComponent } from './admin/send-promo-email/email-message/email-message.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
+import { ProductListBodyComponent } from './pages/product-list-page/product-list-body/product-list-body.component';
+import { ProductListFilteredComponent } from './pages/product-list-page/product-list-filtered/product-list-filtered.component';
+import {AuthInterceptorInterceptor} from "./services/auth-interceptor.interceptor";
 
 
 @NgModule({
@@ -57,6 +60,8 @@ import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.compone
     EmailMessageComponent,
     SignupPageComponent,
     CheckoutPageComponent,
+    ProductListBodyComponent,
+    ProductListFilteredComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,11 @@ import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.compone
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

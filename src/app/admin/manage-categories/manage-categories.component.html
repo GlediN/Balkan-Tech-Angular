@@ -1,42 +1,84 @@
-<!-- category.component.html -->
-
 <div>
-    <h2>Categories</h2>
-    <div class="card">
+  <h2>Main Categories</h2>
+  <div class="card">
     <ul>
-        <li *ngFor="let category of category; let categoryIndex = index">
-            <strong *ngIf="editingCategoryIndex !== categoryIndex; else editCategoryInput">{{ category.name }}</strong>
-            <ng-template #editCategoryInput>
-                <input [(ngModel)]="editedCategoryName" placeholder="Edit Category">
-            </ng-template>
-            <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" *ngIf="editingCategoryIndex !== categoryIndex" (click)="removeCategory(categoryIndex)">Remove</a>
-            <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" *ngIf="editingCategoryIndex !== categoryIndex" (click)="editCategory(categoryIndex)">Edit</a>
-            <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" *ngIf="editingCategoryIndex === categoryIndex" (click)="saveEditedCategory(categoryIndex)">Save</a>
-            <ul>
-                <li *ngFor="let type of category.types; let productIndex = index">
-                    {{ type.name }}
-                    <a class="h6 text-decoration-none text-truncate btn btn-sm btn-outline-dark" *ngIf="editingProductIndex !== productIndex" (click)="removeProduct(categoryIndex, productIndex)">Remove</a>
-                    <a class="h6 text-decoration-none text-truncate btn btn-sm btn-outline-dark" *ngIf="editingProductIndex !== productIndex" (click)="editProduct(categoryIndex, productIndex)">Edit</a>
-                    <ng-template #editProductInput>
-                        <input [(ngModel)]="editedProductName" placeholder="Edit Product">
-                    </ng-template>
-                    <a class="h6 text-decoration-none text-truncate btn btn-sm btn-outline-dark" *ngIf="editingProductIndex === productIndex" (click)="saveEditedProduct(categoryIndex, productIndex)">Save</a>
-                </li>
-            </ul>
-
-            <div>
-                <input [(ngModel)]="newProduct" placeholder="New Product">
-                <a class="h6 text-decoration-none text-truncate btn btn-sm btn-outline-dark" (click)="addProduct(categoryIndex)">Add Product</a>
+      <li *ngFor="let mainCategory of mainCategories; let mainIndex = index" class="category-item">
+        <div class="category-content">
+          <div class="category-header" *ngIf="editingMainCategoryIndex !== mainIndex; else editMainCategoryInput">
+            {{ mainCategory.name }}
+          </div>
+          <ng-template #editMainCategoryInput>
+            <div class="edit-category-input">
+              <input [(ngModel)]="editedMainCategoryName" placeholder="Edit Main Category Name">
+              <input [(ngModel)]="editedMainCategoryPhoto" placeholder="Edit Main Category Photo">
+              <div class="category-actions">
+                <a (click)="saveEditedMainCategory(mainIndex)"><i class="fas fa-save"></i> Save</a>
+                <a (click)="cancelEditMainCategory()"><i class="fas fa-times"></i> Cancel</a>
+              </div>
             </div>
+          </ng-template>
+          <div class="category-actions" *ngIf="editingMainCategoryIndex !== mainIndex">
+            <a (click)="removeCategory(mainIndex)"><i class="fas fa-trash-alt"></i></a>
+            <a (click)="editMainCategory(mainIndex)"><i class="fas fa-edit"></i></a>
+          </div>
 
-        </li>
-
+          <ul>
+            <ng-container *ngFor="let category of categories; let categoryIndex = index">
+              <li *ngIf="category.parentId === mainCategory.id.toString()" class="subcategory-item">
+                <div class="category-name" *ngIf="editingCategoryIndex !== categoryIndex; else editCategoryInput">
+                  {{ category.name }}
+                </div>
+                <ng-template #editCategoryInput>
+                  <div class="edit-category-input">
+                    <input [(ngModel)]="editedCategoryName" placeholder="Edit Category Name">
+                    <input [(ngModel)]="editedCategoryPhoto" placeholder="Edit Category Photo">
+                    <div>
+                      <label for="parentCategory">Select Parent Category: </label>
+                      <select id="parentCategory" [(ngModel)]="editedCategoryParentId">
+                        <option value="" disabled>Select parent category</option>
+                        <option value="null">Main Category</option>
+                        <option *ngFor="let parentCategory of mainCategories" [value]="parentCategory.id.toString()">
+                          {{ parentCategory.name }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="category-actions">
+                      <a (click)="saveEditedCategory(categoryIndex)"><i class="fas fa-save"></i> Save</a>
+                      <a (click)="cancelEditCategory()"><i class="fas fa-times"></i> Cancel</a>
+                    </div>
+                  </div>
+                </ng-template>
+                <div class="category-actions" *ngIf="editingCategoryIndex !== categoryIndex">
+                  <a (click)="removeCategory(categoryIndex)"><i class="fas fa-trash-alt"></i></a>
+                  <a (click)="editCategory(categoryIndex)"><i class="fas fa-edit"></i></a>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </li>
     </ul>
+  </div>
 
-    <div>
-        <input [(ngModel)]="newCategory" placeholder="New Category">
-        <a class="h6 text-decoration-none text-truncate btn btn-sm btn-outline-dark" (click)="addCategory()">Add Category</a>
+  <div class="add-category-section">
+    <h3>Add New Category</h3>
+    <div class="edit-category-input">
+      <input [(ngModel)]="newCategoryName" placeholder="New Category Name">
+      <input [(ngModel)]="newCategoryPhoto" placeholder="New Category Photo">
+      <div>
+        <label for="newParentCategory">Select Parent Category: </label>
+        <select id="newParentCategory" [(ngModel)]="newCategoryParentId">
+          <option value="" disabled>Select parent category</option>
+          <option value="null">Main Category</option>
+          <option *ngFor="let parentCategory of mainCategories" [value]="parentCategory.id.toString()">
+            {{ parentCategory.name }}
+          </option>
+        </select>
+      </div>
+      <div class="category-actions">
+        <a (click)="addCategory()"><i class="fas fa-plus"></i> Add Category</a>
+        <a (click)="cancelAddCategory()"><i class="fas fa-times"></i> Cancel</a>
+      </div>
     </div>
+  </div>
 </div>
-</div>
-

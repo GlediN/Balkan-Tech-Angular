@@ -1,89 +1,137 @@
-import { Component } from '@angular/core';
+// manage-categories.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-media',
   templateUrl: './manage-categories.component.html',
-  styleUrls: ['./manage-categories.component.scss']
+  styleUrls: ['./manage-categories.component.scss'],
 })
-export class ManageCategoriesComponent {
-
-
-  category = [
-    {
-      name: 'Smartphone',
-      types:[ {name:'iphone'},
-        {name:'samsung'}]
-    },
-    {
-      name: 'Smartwaches',
-      types:[ {name:'apple'},
-        {name:'chinese'},
-        {name:'vietnam'}]
-    },
-    {
-      name: 'Laptot',
-      types:[ {name:'iphone'},
-        {name:'samsung'}]
-    },
-
-
-  ]
-
-// Variables to handle new category and new product inputs
-  newCategory: string = '';
-  newProduct: string = '';
-
-  // Variables for editing
+export class ManageCategoriesComponent implements OnInit {
+  categories: any[] = [];
+  mainCategories: any[] = [];
   editingCategoryIndex: number | null = null;
-  editingProductIndex: number | null = null;
   editedCategoryName: string = '';
-  editedProductName: string = '';
+  editedCategoryPhoto: string = '';
+  editedCategoryParentId: string = '';
+  newCategoryName: string = '';
+  newCategoryPhoto: string = '';
+  newCategoryParentId: string = '';
 
-  // Methods for category and product management
+  constructor(private categoryService: CategoryService) {}
+
+  ngOnInit() {
+    this.loadMainCategories()
+  }
   addCategory() {
-    if (this.newCategory) {
-      this.category.push({ name: this.newCategory, types: [] });
-      this.newCategory = '';
-    }
+    const newCategory = {
+      name: this.newCategoryName,
+      photo: this.newCategoryPhoto,
+      parentId: this.newCategoryParentId,
+    };
+    this.categoryService.addCategory(newCategory).subscribe(
+      (response) => {
+        console.log('Category added successfully:', response);
+        this.loadCategories();
+      },
+      (error) => {
+        console.error('Error adding category:', error);
+      }
+    );
   }
 
-  removeCategory(index: number) {
-    this.category.splice(index, 1);
-  }
-
-  editCategory(index: number) {
+  editCategory(index: number): void {
     this.editingCategoryIndex = index;
-    this.editedCategoryName = this.category[index].name;
+    this.editedCategoryName = this.categories[index].name;
+    this.editedCategoryPhoto = this.categories[index].photo;
+    this.editedCategoryParentId = this.categories[index].parentId;
   }
 
-  saveEditedCategory(index: number) {
-    if (this.editedCategoryName) {
-      this.category[index].name = this.editedCategoryName;
-      this.editingCategoryIndex = null;
+  saveEditedCategory(index: number): void {
+    const editedCategory = {
+      id: this.categories[index].id,
+      name: this.editedCategoryName,
+      photo: this.editedCategoryPhoto,
+      parentId: this.editedCategoryParentId,
+    };
+
+    this.categoryService.updateCategory(editedCategory).subscribe(
+      () => {
+        this.editingCategoryIndex = null;
+        this.categories[index] = { ...this.categories[index], ...editedCategory };
+      });
+  }
+  removeCategory(index: number) {
+    const categoryId = this.categories[index].id;
+
+    this.categoryService.deleteCategory(categoryId).subscribe(
+      (response: any) => {
+        this.loadCategories();
+      });
+  }
+
+  cancelEditCategory() {
+    this.editingCategoryIndex = null;
+    this.editedCategoryName = '';
+    this.editedCategoryPhoto = '';
+    this.editedCategoryParentId = '';
+  }
+
+  cancelAddCategory() {
+    this.newCategoryName = '';
+    this.newCategoryPhoto = '';
+    this.newCategoryParentId = '';
+  }
+
+    getSubcategories(parentId: string): any[] {
+        return this.categories.filter(category => category.parentId === parentId);
     }
-  }
 
-  addProduct(categoryIndex: number) {
-    if (this.newProduct) {
-      this.category[categoryIndex].types.push({ name: this.newProduct });
-      this.newProduct = '';
+    filteredSubcategories: any[] = [];
+
+    loadMainCategories() {
+        this.categoryService.getMainCategories().subscribe(
+            (response: any) => {
+                this.mainCategories = response;
+                this.loadCategories();
+            });
     }
-  }
 
-  removeProduct(categoryIndex: number, productIndex: number) {
-    this.category[categoryIndex].types.splice(productIndex, 1);
-  }
-
-  editProduct(categoryIndex: number, productIndex: number) {
-    this.editingProductIndex = productIndex;
-    this.editedProductName = this.category[categoryIndex].types[productIndex].name;
-  }
-
-  saveEditedProduct(categoryIndex: number, productIndex: number) {
-    if (this.editedProductName) {
-      this.category[categoryIndex].types[productIndex].name = this.editedProductName;
-      this.editingProductIndex = null;
+    loadCategories() {
+        this.categoryService.getSubCategories().subscribe(
+            (subResponse: any) => {
+                this.categories = subResponse;
+                this.updateFilteredSubcategories();
+            });
     }
-  }
+
+    updateFilteredSubcategories() {
+        this.filteredSubcategories = this.categories.filter(category => {
+            return this.mainCategories.some(mainCategory => mainCategory.id === category.parentId);
+        });
+    }
+
+    editedMainCategoryName: string = '';
+    editedMainCategoryPhoto: string = '';
+    editingMainCategoryIndex: number = -1;
+
+    editMainCategory(index: number): void {
+        this.editingMainCategoryIndex = index;
+        this.editedMainCategoryName = this.mainCategories[index].name;
+        this.editedMainCategoryPhoto = this.mainCategories[index].photo;
+    }
+
+    saveEditedMainCategory(index: number): void {
+        this.mainCategories[index].name = this.editedMainCategoryName;
+        this.mainCategories[index].photo = this.editedMainCategoryPhoto;
+        this.mainCategories[index].parentId = 'null';
+        this.categoryService.updateCategory(this.mainCategories[index]).subscribe();
+        this.editingMainCategoryIndex = -1;
+    }
+
+    cancelEditMainCategory(): void {
+        this.editingMainCategoryIndex = -1;
+    }
+
 
 }

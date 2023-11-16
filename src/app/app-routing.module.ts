@@ -15,14 +15,24 @@ import {PurchaseHistoryComponent} from "./admin/purchase-history/purchase-histor
 import {EmailMessageComponent} from "./admin/send-promo-email/email-message/email-message.component";
 import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
 import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
+import {ProductListBodyComponent} from "./pages/product-list-page/product-list-body/product-list-body.component";
+import {
+  ProductListFilteredComponent
+} from "./pages/product-list-page/product-list-filtered/product-list-filtered.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home-page', pathMatch: 'full' },
   { path: 'home-page', component: HomePageComponent },
-  { path: 'products', component: ProductListPageComponent},
+  { path: 'products', component: ProductListPageComponent,
+  children:[
+    { path: '', redirectTo: 'all', pathMatch: 'full' },
+    {path: 'all', component: ProductListBodyComponent},
+    { path: ':category', component: ProductListFilteredComponent},
+
+  ]},
   { path: 'about-us', component: AboutUsPageComponent},
-  { path: 'product-detail', component: ProductDetailsComponent},
+  { path: 'product-detail', component: ProductDetailsComponent,},
   { path: "login",component:LoginPageComponent},
   { path: "signup",component:SignupPageComponent},
   { path: "checkout",component:CheckoutPageComponent},
@@ -30,7 +40,7 @@ const routes: Routes = [
   children:[{
     path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'products', component: ProductsComponent},
+    { path: 'products/:categoryId', component: ProductsComponent },
     {path: 'manage-categories', component: ManageCategoriesComponent},
     {path: 'user-details', component: UserDetailsComponent},
     {path: 'send-promo-email', component: SendPromoEmailComponent},
