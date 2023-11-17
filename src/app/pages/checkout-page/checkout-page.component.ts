@@ -24,7 +24,7 @@ export class CheckoutPageComponent {
   }
 
   get clientOrder() {
-    console.log();
+
     return this.cartService.getCartItems();
   }
 
