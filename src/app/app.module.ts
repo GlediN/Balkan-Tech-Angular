@@ -32,6 +32,7 @@ import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.compone
 import { ProductListBodyComponent } from './pages/product-list-page/product-list-body/product-list-body.component';
 import { ProductListFilteredComponent } from './pages/product-list-page/product-list-filtered/product-list-filtered.component';
 import {AuthInterceptorInterceptor} from "./services/auth-interceptor.interceptor";
+import { SearchResultsComponent } from './pages/product-list-page/search-results/search-results.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {AuthInterceptorInterceptor} from "./services/auth-interceptor.intercepto
     CheckoutPageComponent,
     ProductListBodyComponent,
     ProductListFilteredComponent,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,

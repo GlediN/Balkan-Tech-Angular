@@ -1,30 +1,34 @@
 <div>
   <h2>Products</h2>
-
+  <div class="card">
   <div *ngIf="categoryId !== null">
-    <p>Category ID: {{ categoryId }}</p>
+    <p>Category Name: {{ categoryName }}</p>
   </div>
 
   <div *ngIf="products.length > 0; else noProducts">
-    <ul>
+    <ul class="product-list">
       <li *ngFor="let product of products">
         <div *ngIf="!product.isEditing">
           <h4>{{ product.name }}</h4>
-          <p>Description: {{ product.description }}</p>
-          <p>Quantity: {{ product.quantity }}</p>
-          <p>Price: ${{ product.price }}</p>
-          <p>Discount: {{ product.discount }}</p>
-          <p>Sold Quantity: {{ product.soldQty }}</p>
-          <div *ngIf="product.productPhotos.length > 0">
+          <div class="category-actions">
+            <a (click)="editProduct(product)">
+              <i class="fas fa-edit"></i> Edit
+            </a>
+            <a (click)="deleteProduct(product.id)">
+              <i class="fas fa-trash-alt"></i> Delete
+            </a>
+          </div>
+          <p class="product-info">Description: {{ product.description }}</p>
+          <p class="product-info">Quantity: {{ product.quantity }}</p>
+          <p class="product-info">Price: ${{ product.price }}</p>
+          <p class="product-info">Discount: {{ product.discount }}</p>
+          <p class="product-info">Sold Quantity: {{ product.soldQty }}</p>
+          <div *ngIf="product.productPhotos?.length > 0" class="product-photos">
             <div *ngFor="let photo of product.productPhotos">
               <img [src]="photo.productPhoto" alt="Product Image">
             </div>
           </div>
-
-          <button (click)="editProduct(product)">Edit</button>
-          <button (click)="deleteProduct(product.id)">Delete</button>
         </div>
-
         <ng-container *ngIf="product.isEditing">
           <form (submit)="saveEditedProduct(product)">
             <label for="editProductName">Name:</label>
@@ -41,13 +45,19 @@
 
             <label for="editProductDiscount">Discount:</label>
             <input type="number" id="editProductDiscount" name="discount" [(ngModel)]="product.editableData.discount" required>
+
             <label for="editProductImageUrls">Image URLs:</label>
             <input type="text" id="editProductImageUrls" name="productImageUrls" [(ngModel)]="product.editableData.imageUrls">
 
-            <button type="submit">Save</button>
-            <button type="button" (click)="cancelEdit(product)">Cancel</button>
+            <div class="category-actions">
+              <button type="submit"><i class="fas fa-save"></i> Save</button>
+              <button type="button" (click)="cancelEdit(product)">
+                <i class="fas fa-times"></i> Cancel
+              </button>
+            </div>
           </form>
         </ng-container>
+        <hr>
       </li>
     </ul>
   </div>
@@ -55,7 +65,8 @@
   <ng-template #noProducts>
     <p>No products available for this category.</p>
   </ng-template>
-  <div>
+
+  <div class="add-product-container">
     <h3>Add Product</h3>
     <form #productForm="ngForm" (submit)="addProduct(productForm.value)">
       <label for="productName">Name:</label>
@@ -72,10 +83,9 @@
 
       <label for="productDiscount">Discount:</label>
       <input type="number" id="productDiscount" name="discount" ngModel required>
-      <label for="productImageUrls">Image URLs:</label>
-      <input type="text" id="productImageUrls" name="productImageUrls" ngModel>
 
-      <button type="submit">Add Product</button>
+      <button type="submit"><i class="fas fa-plus"></i> Add Product</button>
     </form>
+  </div>
   </div>
 </div>

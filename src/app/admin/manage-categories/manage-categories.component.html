@@ -26,7 +26,7 @@
             <ng-container *ngFor="let category of categories; let categoryIndex = index">
               <li *ngIf="category.parentId === mainCategory.id.toString()" class="subcategory-item">
                 <div class="category-name" *ngIf="editingCategoryIndex !== categoryIndex; else editCategoryInput">
-                  {{ category.name }}
+                <a [routerLink]="'../products/'+category.id">{{ category.name }}</a>
                 </div>
                 <ng-template #editCategoryInput>
                   <div class="edit-category-input">
