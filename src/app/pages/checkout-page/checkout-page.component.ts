@@ -51,7 +51,7 @@ export class CheckoutPageComponent {
 
   userData = [
     {
-      firstnametest: '',
+      firstname: '',
       lastname: 'test1',
       email: 'test2',
       phone: 'test3',
