@@ -1,15 +1,91 @@
-<h1>Products</h1>
-<div class="card">
-    <div class="card-head">Lorem ipsum - product 1</div>
-    <div class="card-body">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas ducimus soluta, quasi aut ipsa non, ullam enim
-        rem repudiandae, vitae provident animi. Inventore rerum, voluptas optio dignissimos blanditiis modi illo!
-    </div>
-</div>
-<div class="card">
-    <div class="card-head">Lorem ipsum - product 2</div>
-    <div class="card-body">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas ducimus soluta, quasi aut ipsa non, ullam enim
-        rem repudiandae, vitae provident animi. Inventore rerum, voluptas optio dignissimos blanditiis modi illo!
-    </div>
+<div>
+  <h2>Products</h2>
+  <div class="card">
+  <div *ngIf="categoryId !== null">
+    <p>Category Name: {{ categoryName }}</p>
+  </div>
+
+  <div *ngIf="products.length > 0; else noProducts">
+    <ul class="product-list">
+      <li *ngFor="let product of products">
+        <div *ngIf="!product.isEditing">
+          <h4>{{ product.name }}</h4>
+          <div class="category-actions">
+            <a (click)="editProduct(product)">
+              <i class="fas fa-edit"></i> Edit
+            </a>
+            <a (click)="deleteProduct(product.id)">
+              <i class="fas fa-trash-alt"></i> Delete
+            </a>
+          </div>
+          <p class="product-info">Description: {{ product.description }}</p>
+          <p class="product-info">Quantity: {{ product.quantity }}</p>
+          <p class="product-info">Price: ${{ product.price }}</p>
+          <p class="product-info">Discount: {{ product.discount }}</p>
+          <p class="product-info">Sold Quantity: {{ product.soldQty }}</p>
+          <div *ngIf="product.productPhotos?.length > 0" class="product-photos">
+            <div *ngFor="let photo of product.productPhotos">
+              <img [src]="photo.productPhoto" alt="Product Image">
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="product.isEditing">
+          <form (submit)="saveEditedProduct(product)">
+            <label for="editProductName">Name:</label>
+            <input type="text" id="editProductName" name="name" [(ngModel)]="product.editableData.name" required>
+
+            <label for="editProductDescription">Description:</label>
+            <textarea id="editProductDescription" name="description" [(ngModel)]="product.editableData.description" required></textarea>
+
+            <label for="editProductQuantity">Quantity:</label>
+            <input type="number" id="editProductQuantity" name="quantity" [(ngModel)]="product.editableData.quantity" required>
+
+            <label for="editProductPrice">Price:</label>
+            <input type="number" id="editProductPrice" name="price" [(ngModel)]="product.editableData.price" required>
+
+            <label for="editProductDiscount">Discount:</label>
+            <input type="number" id="editProductDiscount" name="discount" [(ngModel)]="product.editableData.discount" required>
+
+            <label for="editProductImageUrls">Image URLs:</label>
+            <input type="text" id="editProductImageUrls" name="productImageUrls" [(ngModel)]="product.editableData.imageUrls">
+
+            <div class="category-actions">
+              <button type="submit"><i class="fas fa-save"></i> Save</button>
+              <button type="button" (click)="cancelEdit(product)">
+                <i class="fas fa-times"></i> Cancel
+              </button>
+            </div>
+          </form>
+        </ng-container>
+        <hr>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noProducts>
+    <p>No products available for this category.</p>
+  </ng-template>
+
+  <div class="add-product-container">
+    <h3>Add Product</h3>
+    <form #productForm="ngForm" (submit)="addProduct(productForm.value)">
+      <label for="productName">Name:</label>
+      <input type="text" id="productName" name="name" ngModel required>
+
+      <label for="productDescription">Description:</label>
+      <textarea id="productDescription" name="description" ngModel required></textarea>
+
+      <label for="productQuantity">Quantity:</label>
+      <input type="number" id="productQuantity" name="quantity" ngModel required>
+
+      <label for="productPrice">Price:</label>
+      <input type="number" id="productPrice" name="price" ngModel required>
+
+      <label for="productDiscount">Discount:</label>
+      <input type="number" id="productDiscount" name="discount" ngModel required>
+
+      <button type="submit"><i class="fas fa-plus"></i> Add Product</button>
+    </form>
+  </div>
+  </div>
 </div>

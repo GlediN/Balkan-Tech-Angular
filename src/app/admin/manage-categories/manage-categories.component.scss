@@ -1,0 +1,30 @@
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.category-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.category-header {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.edit-category-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-actions a {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+}

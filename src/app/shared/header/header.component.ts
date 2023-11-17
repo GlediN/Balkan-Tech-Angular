@@ -6,6 +6,8 @@ import {LoginPageComponent} from "../../pages/login-page/login-page.component";
 import {WeatherService} from "../../services/weather.service";
 import {CartService} from "../../services/cart.service";
 import {NavigationStart, Router} from "@angular/router";
+import {ProductService} from "../../services/product.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -23,7 +25,9 @@ import {NavigationStart, Router} from "@angular/router";
   constructor(private modalService:NgbModal,
               private weatherService: WeatherService,
               public cartService: CartService,
-              private router: Router) {
+              private router: Router,
+              private productService:ProductService,
+              private httpClient:HttpClient) {
   }
 
     ngOnInit(): void {
@@ -93,6 +97,15 @@ import {NavigationStart, Router} from "@angular/router";
     toggleNavbar() {
         this.isNavbarCollapsed = !this.isNavbarCollapsed;
     }
+
+    searchParam:string='';
+  searchProducts(searchParam: string) {
+    console.log('Search clicked with parameter:', searchParam);
+    if (searchParam.trim() !== '') {
+      this.router.navigate(['/products/search', searchParam]);
+    }
+  }
+
 
 
 }
