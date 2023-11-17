@@ -21,7 +21,6 @@ export class CheckoutPageComponent {
   ];
 
   constructor(private cartService: CartService) {
-    console.log('Cart items in CheckoutPageComponent:', this.clientOrder);
   }
 
   get clientOrder() {
