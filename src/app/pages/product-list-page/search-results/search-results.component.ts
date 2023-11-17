@@ -159,10 +159,13 @@ searchParam!:string;
 
   ngOnInit() {
     console.log('SearchResultsComponent ngOnInit executed');
-    this.route.queryParams.subscribe((params) => {
-      this.searchParam = params['param'];
+    this.route.params.subscribe((params) => {
+      this.searchParam = params['searchParam'];
+      console.log('Search Param:', this.searchParam);
+
       if (this.searchParam) {
         this.productService.getProductsBySearch(this.searchParam).subscribe((results) => {
+          console.log('Search Results:', results);
           this.searchResults = results;
         });
       }
