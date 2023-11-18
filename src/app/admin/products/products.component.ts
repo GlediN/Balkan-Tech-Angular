@@ -11,7 +11,7 @@ interface Product {
     discount: number;
     soldQty: number;
     categoryId: number;
-    productPhotos: ProductPhoto[];
+    imageUrl: string;
     isEditing?: boolean;
     editableData?: {
         name: string;
@@ -20,7 +20,7 @@ interface Product {
         price: number;
         discount: number;
         categoryId:number;
-        productPhotos: ProductPhoto[];
+        imageUrl: string;
     };
 }
 
@@ -109,6 +109,7 @@ export class ProductsComponent implements OnInit{
                 description: product.editableData.description,
                 price: product.editableData.price,
                 discount: product.editableData.discount,
+              imageUrl:product.editableData.imageUrl
             };
             const index = this.products.findIndex(p => p.id === product.id);
             if (index !== -1) {
