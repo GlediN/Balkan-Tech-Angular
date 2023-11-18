@@ -22,20 +22,23 @@
           <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
           <i class="fa fa-angle-down text-dark"></i>
         </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownCategories" class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" >
-          <a href="" class="dropdown-item">Dresses</a>
-          <a href="" class="dropdown-item">Shirts</a>
-          <a href="" class="dropdown-item">Jeans</a>
-          <a href="" class="dropdown-item">Swimwear</a>
-          <a href="" class="dropdown-item">Sleepwear</a>
-          <a href="" class="dropdown-item">Sportswear</a>
-          <a href="" class="dropdown-item">Jumpsuits</a>
-          <a href="" class="dropdown-item">Blazers</a>
-          <a href="" class="dropdown-item">Jackets</a>
-          <a href="" class="dropdown-item">Shoes</a>
+        <div ngbDropdownMenu aria-labelledby="dropdownCategories" class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical">
+          <ul class="main-categories-list">
+            <li *ngFor="let mainCategory of mainCategories; let mainIndex = index" class="category-item">
+              <div class="category-content">
+                <a href="" class="dropdown-item">{{ mainCategory.name }}</a>
+                <ul class="subcategory-list" *ngIf="getSubcategories(mainCategory.id).length > 0">
+                  <li *ngFor="let subcategory of getSubcategories(mainCategory.id)" class="subcategory-item">
+                    <a href="" class="dropdown-item">{{ subcategory.name }}</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+
     <div class="col-lg-9">
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
         <a href="" class="text-decoration-none d-block d-lg-none">

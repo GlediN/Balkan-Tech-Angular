@@ -8,6 +8,7 @@ import {CartService} from "../../services/cart.service";
 import {NavigationStart, Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
 import {HttpClient} from "@angular/common/http";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,8 @@ import {HttpClient} from "@angular/common/http";
               public cartService: CartService,
               private router: Router,
               private productService:ProductService,
-              private httpClient:HttpClient) {
+              private httpClient:HttpClient,
+              private categoryService: CategoryService) {
   }
 
     ngOnInit(): void {
@@ -39,7 +41,21 @@ import {HttpClient} from "@angular/common/http";
       this.cartService.cartItemsChanged.subscribe(() => {
         this.clientOrderCount = this.cartService.getCartItems().length;
       });
+
+      this.categoryService.getCategories().subscribe(
+        (response: any) => {
+          this.mainCategories = response;
+        }
+      );
       }
+
+  getSubcategories(parentId: string): any[] {
+    return this.categories.filter(category => category.parentId === parentId);
+  }
+
+
+
+
 
   getTemperatureAndDisplay() {
     if (this.userLocation && this.userLocation.city) {
@@ -59,7 +75,15 @@ import {HttpClient} from "@angular/common/http";
     this.modalService.open(LoginPageComponent)
   }
 
+  filteredSubcategories: any[] = [];
+  mainCategories: any[] = [];
+  categories: any[] = [];
 
+  updateFilteredSubcategories() {
+    this.filteredSubcategories = this.categories.filter(category => {
+      return this.mainCategories.some(mainCategory => mainCategory.id === category.parentId);
+    });
+  }
 
 
   showCartDropdown = false;
