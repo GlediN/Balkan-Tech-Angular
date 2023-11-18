@@ -24,7 +24,7 @@
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownCategories" class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical">
           <ul class="main-categories-list">
-            <li *ngFor="let mainCategory of mainCategories; let mainIndex = index" class="category-item">
+            <li *ngFor="let mainCategory of mainCategories" class="category-item">
               <div class="category-content">
                 <a href="" class="dropdown-item">{{ mainCategory.name }}</a>
                 <ul class="subcategory-list" *ngIf="getSubcategories(mainCategory.id).length > 0">
