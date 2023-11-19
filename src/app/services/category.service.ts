@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environmentVar } from "../enovironment-variables/environment-var";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import {Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,4 +34,10 @@ export class CategoryService {
   getSubCategories(): Observable<any> {
     return this.http.get(`${this.url}/category/sub-category`);
   }
+
+    getCategoryById(categoryId: number): Observable<any> {
+        return this.http.get(`${this.url}/category/get/${categoryId}`).pipe(
+            tap(response => console.log('Category API Response:', response))
+        );
+    }
 }

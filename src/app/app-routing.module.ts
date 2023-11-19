@@ -30,7 +30,7 @@ const routes: Routes = [
         children: [
             {path: '', redirectTo: 'all', pathMatch: 'full'},
             {path: 'all', component: ProductListBodyComponent},
-            {path: ':category', component: ProductListFilteredComponent},
+            {path: 'category/:categoryId', component: ProductListFilteredComponent},
             {path: 'search/:searchParam', component: SearchResultsComponent}
 
         ]

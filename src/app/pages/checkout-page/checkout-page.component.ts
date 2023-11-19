@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from "../../services/cart.service";
+import {CheckoutService} from "../../services/checkout.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-checkout-page',
@@ -7,20 +9,18 @@ import { CartService } from "../../services/cart.service";
   styleUrls: ['./checkout-page.component.scss']
 })
 export class CheckoutPageComponent {
+  userData: any = {
+    name: '',
+    surname: '',
+    email: '',
+    contactNumber: '',
+    address: '',
+    totalPrice:this.totalPrice,
+  };
 
-  userData = [
-    {
-      firstname: '',
-      lastname: 'test1',
-      email: 'test2',
-      phone: 'test3',
-      address: 'test4',
-      country: 'test5',
-      city: 'test7',
-    },
-  ];
-
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private checkOutService: CheckoutService,
+              private router:Router) {
   }
 
   get clientOrder() {
@@ -30,5 +30,16 @@ export class CheckoutPageComponent {
 
   get totalPrice() {
     return this.cartService.getTotalPrice();
+  }
+
+  placeOrder() {
+    this.userData.orderItems = this.clientOrder.map(item => ({
+      productId: item.id.toString(),
+      quantity: item.quantity !== undefined ? item.quantity.toString() : '1'
+    }));
+
+    this.checkOutService.checkout(this.userData).subscribe();
+    this.cartService.clearCart();
+    this.router.navigate(['/home-page']);
   }
 }

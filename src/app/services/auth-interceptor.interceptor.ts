@@ -13,7 +13,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (token && request.url.startsWith('http://localhost:8080')) {
       const requestsToSite = request.clone({
         setHeaders: {

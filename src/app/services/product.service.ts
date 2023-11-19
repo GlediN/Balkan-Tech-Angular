@@ -8,6 +8,7 @@ export interface Product {
   name: string;
   imageUrl: string;
   price: number;
+  categoryId: number;
 }
 
 @Injectable({
@@ -34,20 +35,14 @@ export class ProductService {
     return this.http.post<string>(`${this.url}/product/delete/${productId}`, {});
   }
 
-  getProductsByCategory(categoryId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/product/getByCategory/${categoryId}`);
+  getProductsByCategory(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/product/category/${id}`);
+  }
+    getProductsBySearch(searchParam: string): Observable<Product[]> {
+    const url = `${this.url}/product/search/${searchParam}`;
+    return this.http.post<Product[]>(url, {});
   }
 
-  getProductsBySearch(searchParam: string): Observable<Product[]> {
-    console.log('SearchParam:', searchParam);
-    const url = `${this.url}/product/search/${searchParam}`;
-    return this.http.post<Product[]>(url, {}).pipe(
-        tap(results => console.log('Products from service:', results)),
-        catchError(error => {
-          console.error('Error fetching products:', error);
-          return [];
-        })
-    );
-  }
+
 
 }

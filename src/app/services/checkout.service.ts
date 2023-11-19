@@ -12,7 +12,7 @@ export class CheckoutService {
 
 
   checkout(data: any): Observable<any> {
-    return this.httpClient.post(this.url + "/checkout", data, {
+    return this.httpClient.post(this.url + "/orders/save", data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }

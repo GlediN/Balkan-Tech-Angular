@@ -3,16 +3,20 @@
     <div class="col-lg-2 flex-column align-items-center" style="padding-bottom: 10px">
       <nav class="sidebar bg-dark">
         <ul class="nav flex-column">
-          <li class="nav-item" *ngFor="let category of category">
-            <a [routerLink]="['/products', category.name]" class="nav-link">
-              <h5 class="text-primary">{{ category.name }}</h5>
-            </a>
-            <ul class="nav-item bg-primary" *ngFor="let type of category.types">
-              <a [routerLink]="['/products', category.name, type.name]" class="nav-link text-dark">
-                {{ type.name }}
+          <div>
+          <li class="nav-item" *ngFor="let mainCategory of mainCategories">
+            <span>
+              <h5 class="text-primary">{{ mainCategory.name }}</h5>
+            </span>
+            <ul class="nav-item bg-primary" *ngIf="getSubcategories(mainCategory.id).length > 0">
+              <div *ngFor="let subcategory of getSubcategories(mainCategory.id)">
+              <a [routerLink]="['/products/category', subcategory.id]" class="nav-link text-dark">
+                {{ subcategory.name }}
               </a>
+              </div>
             </ul>
           </li>
+          </div>
         </ul>
       </nav>
     </div>

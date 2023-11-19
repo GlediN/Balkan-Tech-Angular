@@ -1,150 +1,65 @@
-import {Component} from '@angular/core';
-import {CartService} from "../../../services/cart.service";
+import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../../services/cart.service';
+import { CategoryService } from '../../../services/category.service';
+import { ProductService } from '../../../services/product.service';
+
+interface Product {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+  categoryId: number;
+}
+
+interface Category {
+  id: number;
+  name: string;
+  photo: string;
+  parentId: number;
+}
 
 @Component({
   selector: 'app-product-list-body',
   templateUrl: './product-list-body.component.html',
   styleUrls: ['./product-list-body.component.scss']
 })
-export class ProductListBodyComponent {
+export class ProductListBodyComponent implements OnInit {
 
+  mainCategories: Category[] = [];
+  subcategories: Category[] = [];
+  products: { [key: number]: Product[] } = {};
 
-  categories = [
-    {
-      categoryName: 'Smartphone',
-      types: [
-        {
-          typeName: 'Iphone',
-          products: [{
-            productName: 'iPhone 15 Pro Max',
-            imageUrl: 'assets/images/products/product-1.jpg',
-            price: '700'
-          },
-            {
-              productName: 'iPhone 14 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '1000'
-            },
-            {
-              productName: 'iPhone 13 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '900'
-            },
-            {
-              productName: 'iPhone 12 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '800'
-            },
-            {
-              productName: 'iPhone 11 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '700'
-            }
+  constructor(
+      private categoryService: CategoryService,
+      private cartService: CartService,
+      private productService: ProductService
+  ) {}
 
-          ]
-        },
-        {
-          typeName: 'Samsung',
-          products: [{
-            productName: 'iPhone 15 Pro Max',
-            imageUrl: 'assets/images/products/product-1.jpg',
-            price: '700'
-          },
-            {
-              productName: 'iPhone 14 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '1000'
-            },
-            {
-              productName: 'iPhone 13 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '900'
-            },
-            {
-              productName: 'iPhone 12 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '800'
-            },
-            {
-              productName: 'iPhone 11 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '700'
-            }
+  ngOnInit(): void {
+    this.categoryService.getMainCategories().subscribe((mainCategories: Category[]) => {
+      this.mainCategories = mainCategories;
 
-          ]
-        }
-      ]
-    },
-    {
-      categoryName: 'Smartwatches',
-      types: [
-        {
-          typeName: 'IWatch',
-          products: [{
-            productName: 'iWatch 15 Pro Max',
-            imageUrl: 'assets/images/products/product-1.jpg',
-            price: '700'
-          },
-            {
-              productName: 'iWatch 14 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '1000'
-            },
-            {
-              productName: 'iWatch 13 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '900'
-            },
-            {
-              productName: 'iWatch 12 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '800'
-            },
-            {
-              productName: 'iWatch 11 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '700'
-            }
+      this.categoryService.getCategories().subscribe((categories: Category[]) => {
+        this.subcategories = categories.filter(category => category.parentId !== null && category.parentId !== null);
 
-          ]
-        },
-        {
-          typeName: 'SamWatch',
-          products: [{
-            productName: 'SamWatch 15 Pro Max',
-            imageUrl: 'assets/images/products/product-1.jpg',
-            price: '700'
-          },
-            {
-              productName: 'SamWatch 14 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '1000'
-            },
-            {
-              productName: 'SamWatch 13 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '900'
-            },
-            {
-              productName: 'SamWatch 12 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '800'
-            },
-            {
-              productName: 'SamWatch 11 Pro Max',
-              imageUrl: 'assets/images/products/product-1.jpg',
-              price: '700'
-            }]
-        }]
-    }]
-
-
-  constructor(private cartService: CartService) {
+        this.subcategories.forEach(subcategory => {
+          this.productService.getProductsByCategory(subcategory.id).subscribe((products: Product[]) => {
+            this.products[subcategory.id] = products;
+          });
+        });
+      });
+    });
   }
 
-  addToCart(product: any) {
+  getSubcategories(parentId: number): Category[] {
+    return this.subcategories.filter(subcategory => subcategory.parentId == parentId);
+  }
+
+  getProductsByCategory(subcategoryId: number): Product[] {
+    return this.products[subcategoryId] || [];
+  }
+
+  addToCart(product: Product): void {
     this.cartService.addToCart(product);
-    console.log('Item added to cart:', product);
   }
-
 }

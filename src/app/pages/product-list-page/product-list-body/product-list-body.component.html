@@ -1,14 +1,15 @@
 <div class="container-fluid pt-5 pb-3">
-  <div *ngFor="let category of categories">
+  <div *ngFor="let mainCategory of mainCategories">
     <h2 class="section-title position-relative text-uppercase mb-4" >
-      <span class="bg-dark text-primary" style="padding-left: 5px; padding-right: 5px">{{category.categoryName}}</span>
+      <span class="bg-dark text-primary" style="padding-left: 5px; padding-right: 5px">{{mainCategory.name}}</span>
     </h2>
-    <div *ngFor="let type of category.types">
-      <h3 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-        <span class="bg-primary text-dark" style="padding-left: 5px; padding-right: 5px">{{type.typeName}}</span>
-      </h3>
-      <div class="row px-xl-5">
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let product of type.products.slice(0,4)">
+    <div *ngIf="getSubcategories(mainCategory.id).length > 0">
+      <div *ngFor="let subcategory of getSubcategories(mainCategory.id)" class="subcategory-item">
+        <h3 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+          <span class="bg-primary text-dark" style="padding-left: 5px; padding-right: 5px">{{subcategory.name}}</span>
+        </h3>
+        <div class="row px-xl-5">
+          <div class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let product of getProductsByCategory(subcategory.id)">
           <div class="product-item bg-light mb-4">
             <div class="product-img position-relative overflow-hidden">
               <img class="img-fluid w-100" [src]="product.imageUrl" alt="">
@@ -17,15 +18,16 @@
               </div>
             </div>
             <div class="text-center py-4">
-              <a class="h6 text-decoration-none text-truncate" href="">{{product.productName}}</a>
+              <a class="h6 text-decoration-none text-truncate" href="">{{product.name}}</a>
               <div class="d-flex align-items-center justify-content-center mt-2">
                 <h5>${{product.price}}</h5>
               </div>
-              <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" href="">Buy now</a>
+              <a class="h6 text-decoration-none text-truncate btn btn-outline-dark" [routerLink]="'/'">Buy now</a>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>
