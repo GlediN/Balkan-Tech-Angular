@@ -33,7 +33,7 @@ export class LoginPageComponent {
         };
         this.userService.login(credentials).subscribe(
             (response: any) => {
-                localStorage.setItem('token', response.token);
+                sessionStorage.setItem('token', response.token);
                 this.router.navigate(['/dashboard']);
             },
             (error) => {

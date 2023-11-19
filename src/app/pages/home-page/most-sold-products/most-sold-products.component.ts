@@ -21,9 +21,6 @@ export class MostSoldProductsComponent implements OnInit{
     this.getMostSoldProducts();
   }
 
-  protected readonly faSearch = faSearch;
-  protected readonly faCartShopping = faCartShopping;
-
   constructor(private cartService: CartService,
               private productService: ProductService) {}
 
@@ -31,11 +28,7 @@ export class MostSoldProductsComponent implements OnInit{
     this.productService.getMostSoldProducts().subscribe(
       (data: Product[]) => {
         this.mostSoldProducts = data.slice(0, 12);
-      },
-      (error) => {
-        console.error('Error fetching most sold products:', error);
-      }
-    );
+      });
   }
 
   addToCart(product: any) {

@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 import {CartService} from "../../services/cart.service";
+import {ProductService} from "../../services/product.service";
+import {CategoryService} from "../../services/category.service";
 
-
+interface Category {
+  id: number;
+  name: string;
+  photo: string;
+  parentId: string;
+}
 
 @Component({
   selector: 'app-product-list-page',
@@ -10,37 +17,26 @@ import {CartService} from "../../services/cart.service";
 })
 export class ProductListPageComponent {
 
+  constructor(private categoryService:CategoryService) {
+  }
+  mainCategories: any[] = [];
+  subcategories: any[] = [];
 
 
+  ngOnInit(): void {
 
-  category = [
-    {
-      name: 'Smartphones',
-      types:[
-        {name:'iphone'},
-          {name:'samsung'}
-      ]
-    },
-      {
-          name: 'Smartwatches',
-          types:[ {name:'apple'},
-              {name:'chinese'},
-              {name:'vietnam'}]
-      },
-      {
-          name: 'Laptops',
-          types:[ {name:'iphone'},
-              {name:'samsung'}]
-      },
+    this.categoryService.getMainCategories().subscribe((mainCategories: Category[]) => {
+      this.mainCategories = mainCategories;
 
+      this.categoryService.getCategories().subscribe((categories: Category[]) => {
+        this.subcategories = categories.filter(category => category.parentId !== null && category.parentId !== 'null');
+      });
+    });
 
-  ]
+  }
 
-
-
-
-
-
-
+  getSubcategories(parentId: string): Category[] {
+    return this.subcategories.filter(subcategory => subcategory.parentId == parentId);
+  }
 
 }

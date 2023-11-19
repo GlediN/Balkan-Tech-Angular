@@ -9,7 +9,12 @@ import {NavigationStart, Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
 import {HttpClient} from "@angular/common/http";
 import {CategoryService} from "../../services/category.service";
-
+interface Category {
+  id: number;
+  name: string;
+  photo: string;
+  parentId: string;
+}
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,7 +37,11 @@ import {CategoryService} from "../../services/category.service";
               private categoryService: CategoryService) {
   }
 
-    ngOnInit(): void {
+  mainCategories: any[] = [];
+  subcategories: any[] = [];
+
+
+  ngOnInit(): void {
       this.weatherService.getUserLocation().subscribe((location) => {
         this.userLocation = location;
         this.getTemperatureAndDisplay();
@@ -42,20 +51,19 @@ import {CategoryService} from "../../services/category.service";
         this.clientOrderCount = this.cartService.getCartItems().length;
       });
 
-      this.categoryService.getCategories().subscribe(
-        (response: any) => {
-          this.mainCategories = response;
-        }
-      );
+    this.categoryService.getMainCategories().subscribe((mainCategories: Category[]) => {
+      this.mainCategories = mainCategories;
+
+      this.categoryService.getCategories().subscribe((categories: Category[]) => {
+        this.subcategories = categories.filter(category => category.parentId !== null && category.parentId !== 'null');
+      });
+    });
+
       }
 
-  getSubcategories(parentId: string): any[] {
-    return this.categories.filter(category => category.parentId === parentId);
+  getSubcategories(parentId: string): Category[] {
+    return this.subcategories.filter(subcategory => subcategory.parentId == parentId);
   }
-
-
-
-
 
   getTemperatureAndDisplay() {
     if (this.userLocation && this.userLocation.city) {
@@ -73,16 +81,6 @@ import {CategoryService} from "../../services/category.service";
 
   openLoginForm(){
     this.modalService.open(LoginPageComponent)
-  }
-
-  filteredSubcategories: any[] = [];
-  mainCategories: any[] = [];
-  categories: any[] = [];
-
-  updateFilteredSubcategories() {
-    this.filteredSubcategories = this.categories.filter(category => {
-      return this.mainCategories.some(mainCategory => mainCategory.id === category.parentId);
-    });
   }
 
 
