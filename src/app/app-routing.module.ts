@@ -16,10 +16,10 @@ import {EmailMessageComponent} from "./admin/send-promo-email/email-message/emai
 import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
 import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
 import {ProductListBodyComponent} from "./pages/product-list-page/product-list-body/product-list-body.component";
-import {
-    ProductListFilteredComponent
-} from "./pages/product-list-page/product-list-filtered/product-list-filtered.component";
+import {ProductListFilteredComponent} from "./pages/product-list-page/product-list-filtered/product-list-filtered.component";
 import {SearchResultsComponent} from "./pages/product-list-page/search-results/search-results.component";
+import { UserPersonDetailsPageComponent } from './pages/user-person-details-page/user-person-details-page.component';
+
 
 
 const routes: Routes = [
@@ -35,6 +35,7 @@ const routes: Routes = [
 
         ]
     },
+    {path:'personalDetails',component:UserPersonDetailsPageComponent},
     {path: 'about-us', component: AboutUsPageComponent},
     {path: 'product-detail', component: ProductDetailsComponent,},
     {path: "login", component: LoginPageComponent},
