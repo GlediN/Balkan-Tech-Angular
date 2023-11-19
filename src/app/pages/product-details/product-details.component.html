@@ -1,14 +1,14 @@
 <!-- Shop Detail Start -->
 <div class="container-fluid pb-5">
   <div class="row px-xl-5">
-   <!--carousel start-->
+    <!--carousel start-->
     <div class="col-lg-5 mb-30">
       <div id="product-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner bgt">
           <div class="carousel-item active">
             <ngb-carousel *ngIf="product">
-              <ng-template ngbSlide *ngFor="let image of product.images">
-                <img class="h-100 w-100" [src]="image" alt='{{product.name}}'>
+              <ng-template ngbSlide>
+                <img class="h-100 w-100" [src]="product.imageUrl" alt='{{product.name}}'>
               </ng-template>
             </ngb-carousel>
           </div>
@@ -28,19 +28,20 @@
         <div class="d-flex align-items-center mb-4 pt-2">
           <div class="input-group quantity mr-3" style="width: 130px;">
             <div class="input-group-btn">
-              <button class="btn btn-primary btn-minus">
+              <button class="btn btn-primary btn-minus" (click)="decreaseQuantity()">
                 <i class="fa fa-minus"></i>
               </button>
             </div>
-            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+            <input type="text" class="form-control bg-secondary border-0 text-center" [(ngModel)]="quantity" />
             <div class="input-group-btn">
-              <button class="btn btn-primary btn-plus">
+              <button class="btn btn-primary btn-plus" (click)="increaseQuantity()">
                 <i class="fa fa-plus"></i>
               </button>
             </div>
           </div>
-          <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-            Cart</button>
+          <button (click)="this.addToCart(product, quantity)" class="btn btn-primary px-3">
+            <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
+          </button>
         </div>
       </div>
     </div>
