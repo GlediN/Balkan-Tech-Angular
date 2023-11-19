@@ -27,7 +27,7 @@ export class MostSoldProductsComponent implements OnInit{
   getMostSoldProducts(): void {
     this.productService.getMostSoldProducts().subscribe(
       (data: Product[]) => {
-        this.mostSoldProducts = data.slice(0, 12);
+        this.mostSoldProducts = data;
       });
   }
 

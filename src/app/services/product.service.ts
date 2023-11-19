@@ -16,33 +16,39 @@ export interface Product {
 })
 export class ProductService {
 
-  url = environmentVar.apiUrl;
-  constructor(private http: HttpClient) {}
+    url = environmentVar.apiUrl;
 
-    getMostSoldProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>(this.url+"/product/most-sold-products");
+    constructor(private http: HttpClient) {
     }
 
-  addProduct(productData: any): Observable<string> {
-    return this.http.post<string>(`${this.url}/product/add`, productData);
-  }
+    getMostSoldProducts(): Observable<Product[]> {
+        return this.http.get<Product[]>(this.url + "/product/most-sold-products");
+    }
 
-  updateProduct(productData: any): Observable<string> {
-    return this.http.post<string>(`${this.url}/product/update`, productData);
-  }
+    addProduct(productData: any): Observable<string> {
+        return this.http.post<string>(`${this.url}/product/add`, productData);
+    }
 
-  deleteProduct(productId: number): Observable<string> {
-    return this.http.post<string>(`${this.url}/product/delete/${productId}`, {});
-  }
+    updateProduct(productData: any): Observable<string> {
+        return this.http.post<string>(`${this.url}/product/update`, productData);
+    }
 
-  getProductsByCategory(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/product/category/${id}`);
-  }
+    deleteProduct(productId: number): Observable<string> {
+        return this.http.post<string>(`${this.url}/product/delete/${productId}`, {});
+    }
+
+    getProductsByCategory(id: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.url}/product/category/${id}`);
+    }
+
     getProductsBySearch(searchParam: string): Observable<Product[]> {
-    const url = `${this.url}/product/search/${searchParam}`;
-    return this.http.post<Product[]>(url, {});
-  }
+        const url = `${this.url}/product/search/${searchParam}`;
+        return this.http.post<Product[]>(url, {});
+    }
+
+    getProductsById(id: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.url}/product/getById/${id}`);
 
 
-
+    }
 }
