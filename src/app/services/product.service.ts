@@ -43,6 +43,8 @@ export class ProductService {
     return this.http.post<Product[]>(url, {});
   }
 
-
+  getProductsById(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/product/getById/${id}`);
+  }
 
 }
