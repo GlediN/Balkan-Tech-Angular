@@ -97,4 +97,6 @@ export class CartService {
     const storedCart = localStorage.getItem(this.cartKey);
     return storedCart ? JSON.parse(storedCart) : [];
   }
+
+
 }

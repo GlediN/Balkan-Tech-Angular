@@ -37,7 +37,7 @@ const routes: Routes = [
     },
     {path:'personalDetails',component:UserPersonDetailsPageComponent},
     {path: 'about-us', component: AboutUsPageComponent},
-    {path: 'product-detail/:id', component: ProductDetailsComponent,},
+    {path: 'product-detail/:id', component: ProductDetailsComponent},
     {path: "login", component: LoginPageComponent},
     {path: "signup", component: SignupPageComponent},
     {path: "checkout", component: CheckoutPageComponent},
