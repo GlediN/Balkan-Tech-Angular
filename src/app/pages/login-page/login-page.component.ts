@@ -34,6 +34,7 @@ export class LoginPageComponent {
         this.userService.login(credentials).subscribe(
             (response: any) => {
                 sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('email', response.email)
                 this.router.navigate(['/dashboard']);
             },
             (error) => {
