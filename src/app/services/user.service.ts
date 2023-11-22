@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environmentVar} from "../enovironment-variables/environment-var";
 import {Observable} from "rxjs";
+import {Product} from "./product.service";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,11 @@ export class UserService {
     }
   checkToken(){
     return this.httpClient.get(this.url +"/checkToken");
+  }
+
+  getUserByEmail(email: string): Observable<any> {
+    return this.httpClient.get(this.url +"/get-user-by-email/"+email) ;
+
   }
 
 

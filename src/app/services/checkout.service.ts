@@ -18,4 +18,5 @@ export class CheckoutService {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
+
 }
