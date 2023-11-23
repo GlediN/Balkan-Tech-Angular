@@ -74,7 +74,7 @@ import { UserPersonDetailsPageComponent } from './pages/user-person-details-page
     FontAwesomeModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

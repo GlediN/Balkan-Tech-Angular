@@ -10,8 +10,10 @@ import {Product} from "./product.service";
 export class UserService {
 
   url = environmentVar.apiUrl;
+  private baseUrl = 'http://localhost:4200';
 
   constructor(private httpClient:HttpClient) { }
+
 
 
     login(data: any): Observable<any> {
@@ -29,7 +31,6 @@ export class UserService {
   checkToken(){
     return this.httpClient.get(this.url +"/checkToken");
   }
-
   getUserByEmail(email: string): Observable<any> {
     return this.httpClient.get(this.url +"/get-user-by-email/"+email) ;
 

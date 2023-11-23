@@ -1,34 +1,52 @@
-<div class="container d-flex align-items-center justify-content-center vh-100">
-  <div class="p-5 bg-primary text-dark">
-    <h3 class="fw-normal mb-4">Your Personal Details</h3>
+<div class="container-fluid d-flex justify-content-center">
+  <div class="row px-xl-5">
+    <div class="col-lg-8">
+      <h5 class="section-title position-relative text-uppercase mb-3"><span
+        class="bg-secondary pr-3">Personal Details</span></h5>
+      <div class="bg-light p-30 mb-5">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label>First Name</label>
+            <input class="form-control" type="text" placeholder="John" [(ngModel)]="userData.name" name="name">
+          </div>
 
-    <!-- Display Decoded User Details -->
-    <div >
-      <p>Email: {{ email }}</p>
-      <p>Role: {{ role }}</p>
-    </div>
+          <div class="col-md-6 form-group">
+            <label>Last Name</label>
+            <input class="form-control" type="text" placeholder="Doe" [(ngModel)]="userData.surname" name="surname">
+          </div>
 
-    <!-- Form Fields -->
-    <div class="row mb-4 pb-2">
-      <div class="col-md-6">
-        <div class="form-outline">
-          <input type="text" placeholder="Enter First Name" class="form-control form-control-lg" [(ngModel)]="name" name="firstName" />
+          <div class="col-md-6 form-group">
+            <label>E-mail</label>
+            <input class="form-control" type="text" placeholder="example@mail.com" [(ngModel)]="userData.email"
+                   name="email">
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label>Mobile No</label>
+            <input class="form-control" type="text" placeholder="+35566556978" [(ngModel)]="userData.contactNumber"
+                   name="contactNumber">
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label>Address Line 1</label>
+            <input class="form-control" type="text" placeholder="123 Street" [(ngModel)]="userData.address"
+                   name="address">
+          </div>
+          <div class="col-md-6 form-group">
+            <label>Country</label>
+            <select class="custom-select">
+              <option value="Albania">Albania</option>
+              <option value="Kosovo">Kosovo</option>
+              <option value="Montenegro">Montenegro</option>
+              <option value="North Macedonia">North Macedonia</option>
+            </select>
+          </div>
+          <div class="col-md-6 form-group">
+            <label>City</label>
+            <input class="form-control" type="text" [(ngModel)]="userData.contactNumber" placeholder="Tirana">
+          </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-outline">
-          <input type="text" placeholder="Enter Last Name" class="form-control form-control-lg" [(ngModel)]="surname" name="lastName" />
-        </div>
-      </div>
     </div>
-
-    <input type="text" placeholder="Enter Phone Number" class="form-control form-control-lg" [(ngModel)]="contactNumber" name="phoneNumber" />
-    <br>
-    <input type="text" placeholder="Enter Email" class="form-control form-control-lg" [(ngModel)]="email" name="email" />
-    <select class="form-select form-select-lg" [(ngModel)]="subscription" name="sendPromotionalEmail">
-      <option [ngValue]="true">Yes, send promotional email</option>
-      <option [ngValue]="false">No, do not send promotional email</option>
-    </select>
-    <br>
   </div>
 </div>
